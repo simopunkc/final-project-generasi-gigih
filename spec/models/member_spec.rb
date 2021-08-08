@@ -4,7 +4,7 @@ require "./models/m_api_db_tambah_member"
 describe M_api_db_tambah_member do
     it "#insert_member" do
         member = M_raw_member.new('','programmer','admin@web.com','suka jalan-jalan')
-        query = "INSERT INTO member (username,email,bio) values ('#{member.username}','#{member.email}','#{member.bio}')"
+        query = "INSERT INTO tb_member (username,email,bio) values ('#{member.username}','#{member.email}','#{member.bio}')"
         mock = double
         allow(Mysql2::Client).to receive(:new).and_return(mock)
         expect(mock).to receive(:query).with(query)

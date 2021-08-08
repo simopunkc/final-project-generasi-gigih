@@ -34,17 +34,6 @@ LOCK TABLES `tb_post` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS `tb_hashtag_post`;
-CREATE TABLE `tb_hashtag_post` (
-  `id_hashtag` int(10) NOT NULL,
-  `id_post` int(10) NOT NULL,
-  FOREIGN KEY (`id_hashtag`) REFERENCES tb_hashtag(`id`),
-  FOREIGN KEY (`id_post`) REFERENCES tb_post(`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-LOCK TABLES `tb_hashtag_post` WRITE;
-UNLOCK TABLES;
-
-
 DROP TABLE IF EXISTS `tb_hashtag`;
 CREATE TABLE `tb_hashtag` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
@@ -53,4 +42,16 @@ CREATE TABLE `tb_hashtag` (
   UNIQUE KEY `hashtag` (`hashtag`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 LOCK TABLES `tb_hashtag` WRITE;
+INSERT INTO `tb_hashtag` (id,hashtag) VALUES (1,'gigih'),(2,'generasi'),(3,'bisa');
+UNLOCK TABLES;
+
+
+DROP TABLE IF EXISTS `tb_hashtag_post`;
+CREATE TABLE `tb_hashtag_post` (
+  `id_hashtag` int(10) NOT NULL,
+  `id_post` int(10) NOT NULL,
+  FOREIGN KEY (`id_hashtag`) REFERENCES tb_hashtag(`id`),
+  FOREIGN KEY (`id_post`) REFERENCES tb_post(`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+LOCK TABLES `tb_hashtag_post` WRITE;
 UNLOCK TABLES;

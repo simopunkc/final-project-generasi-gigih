@@ -12,7 +12,7 @@ class M_api_db_tambah_member
 
     def insert_member(username,email,bio)
         client = M_koneksi_db.new.buat_koneksi_db
-        client.query("INSERT INTO member (username,email,bio) values ('#{username}','#{email}','#{bio}')")
+        client.query("INSERT INTO tb_member (username,email,bio) values ('#{username}','#{email}','#{bio}')")
         client.last_id
     end
 end
