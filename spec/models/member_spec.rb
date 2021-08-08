@@ -15,7 +15,7 @@ describe M_api_db_tambah_member do
         @double = instance_double(M_api_db_tambah_member)
     end
     it "should blank username" do
-        member = M_raw_member.new('','','admin@web.com','suka jalan-jalan')
+        member = M_raw_member.new('','','programmer@web.com','')
         allow(@double).to receive(:cek_valid).with(member.username,member.email,member.bio).and_return({:hasil => true, :pesan => "Username wajib diisi"})
         output = @double.cek_valid(member.username,member.email,member.bio)
         expect(@double).to have_received(:cek_valid).with(member.username,member.email,member.bio)
@@ -23,11 +23,27 @@ describe M_api_db_tambah_member do
         M_api_db_tambah_member.new.cek_valid(member.username,member.email,member.bio)
     end
     it "should blank email" do
-        member = M_raw_member.new('','programmer','','suka jalan-jalan')
+        member = M_raw_member.new('','programmer','','')
         allow(@double).to receive(:cek_valid).with(member.username,member.email,member.bio).and_return({:hasil => true, :pesan => "Email wajib diisi"})
         output = @double.cek_valid(member.username,member.email,member.bio)
         expect(@double).to have_received(:cek_valid).with(member.username,member.email,member.bio)
         expect(output).to eq({:hasil => true, :pesan => "Email wajib diisi"})
+        M_api_db_tambah_member.new.cek_valid(member.username,member.email,member.bio)
+    end
+    it "should duplicate username" do
+        member = M_raw_member.new('','admin','programmer@web.com','')
+        allow(@double).to receive(:cek_valid).with(member.username,member.email,member.bio).and_return({:hasil => true, :pesan => "Username sudah digunakan"})
+        output = @double.cek_valid(member.username,member.email,member.bio)
+        expect(@double).to have_received(:cek_valid).with(member.username,member.email,member.bio)
+        expect(output).to eq({:hasil => true, :pesan => "Username sudah digunakan"})
+        M_api_db_tambah_member.new.cek_valid(member.username,member.email,member.bio)
+    end
+    it "should duplicate email" do
+        member = M_raw_member.new('','programmer','admin@web.com','')
+        allow(@double).to receive(:cek_valid).with(member.username,member.email,member.bio).and_return({:hasil => true, :pesan => "Email sudah digunakan"})
+        output = @double.cek_valid(member.username,member.email,member.bio)
+        expect(@double).to have_received(:cek_valid).with(member.username,member.email,member.bio)
+        expect(output).to eq({:hasil => true, :pesan => "Email sudah digunakan"})
         M_api_db_tambah_member.new.cek_valid(member.username,member.email,member.bio)
     end
 end

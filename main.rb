@@ -1,20 +1,19 @@
 require 'json'
-# require 'sinatra'
-# require 'mysql2'
-# set :public_folder, File.dirname(__FILE__)
-# set :bind, "0.0.0.0"
+require 'sinatra'
+require 'mysql2'
+set :public_folder, File.dirname(__FILE__)
+set :bind, "0.0.0.0"
 # require "./controllers/c_output"
 # require "./controllers/c_error"
-require "./models/m_koneksi_db"
-require "./controllers/c_api_db_tambah_member"
+# require "./controllers/c_api_db_tambah_member"
 
-class M_item
-    attr_accessor :foo, :bat
-    def initialize(foo=nil,bat=nil)
-        @foo = foo
-        @bat = bat
-    end
-end
+# class C_api_db_tambah_member
+#     attr_accessor :foo, :bat
+#     def initialize(foo=nil,bat=nil)
+#         @foo = foo
+#         @bat = bat
+#     end
+# end
 
 # heeh = {"hasil" => "good", "pesan" => "haha"}
 # out = JSON.generate(heeh)
@@ -22,18 +21,21 @@ end
 # ou2 = JSON.parse(out)
 # puts ou2.inspect
 
-json = '{"foo": 1, "bat": 2}'
-hasil = JSON.parse(json)
-item = M_item.new(hasil["foo"],hasil["bat"])
-puts item.foo
+# json = '{"foo": 1, "bat": 2}'
+# hasil = JSON.parse(json)
+# item = M_item.new(hasil["foo"],hasil["bat"])
+# puts item.foo
 
 post '/register' do
-    output = C_api_db_tambah_member.cetak_homepage
-    if output.is_a?(String)
-        C_output.cetak_output(output)
-    else
-        C_error.cetak_error(output)
-    end
+    parameter = JSON.parse(request.body.read)
+    cek = C_api_db_tambah_member.cek_param_request(parameter)
+    
+    # output = C_api_db_tambah_member.cetak_homepage
+    # if output.is_a?(String)
+    #     C_output.cetak_output(output)
+    # else
+    #     C_error.cetak_error(output)
+    # end
 end
 
 # get '/items/new' do
