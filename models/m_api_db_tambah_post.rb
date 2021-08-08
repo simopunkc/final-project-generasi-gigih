@@ -1,5 +1,17 @@
 require "./models/m_koneksi_db"
 class M_api_db_tambah_post
+    def insert_post_media(id_post, id_media)
+        client = M_koneksi_db.new.buat_koneksi_db
+        client.query("INSERT INTO tb_post_media (id_post,id_media) values (#{id_post},#{id_media})")
+        client.last_id
+    end
+
+    def insert_media(lokasi,ext)
+        client = M_koneksi_db.new.buat_koneksi_db
+        client.query("INSERT INTO tb_media (lokasi,ext) values ('#{lokasi}','#{ext}')")
+        client.last_id
+    end
+
     def insert_hashtag_post(id_hashtag, id_post)
         client = M_koneksi_db.new.buat_koneksi_db
         client.query("INSERT INTO tb_hashtag_post (id_hashtag,id_post) values (#{id_hashtag},#{id_post})")

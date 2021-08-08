@@ -1,5 +1,6 @@
 require "./models/m_raw_post"
 require "./models/m_raw_hashtag"
+require "./models/m_raw_media"
 require "./models/m_api_db_tambah_post"
 
 describe M_api_db_tambah_post do
@@ -39,6 +40,25 @@ describe M_api_db_tambah_post do
         expect(mock).to receive(:query).with(query)
         expect(mock).to receive(:last_id)
         M_api_db_tambah_post.new.insert_post(post.id_member,post.id_parent_post,post.text)
+    end
+    it "#insert_media" do
+        media = M_raw_media.new('','upload/file.jpg','.jpg')
+        query = "INSERT INTO tb_media (lokasi,ext) values ('#{media.lokasi}','#{media.ext}')"
+        mock = double
+        allow(Mysql2::Client).to receive(:new).and_return(mock)
+        expect(mock).to receive(:query).with(query)
+        expect(mock).to receive(:last_id)
+        M_api_db_tambah_post.new.insert_media(media.lokasi,media.ext)
+    end
+    it "#insert_post_media" do
+        post = M_raw_post.new(1,1,0,'lorem ipsum','')
+        media = M_raw_media.new(1,'upload/file.jpg','.jpg')
+        query = "INSERT INTO tb_post_media (id_post,id_media) values (#{post.id},#{media.id})"
+        mock = double
+        allow(Mysql2::Client).to receive(:new).and_return(mock)
+        expect(mock).to receive(:query).with(query)
+        expect(mock).to receive(:last_id)
+        M_api_db_tambah_post.new.insert_post_media(post.id,media.id)
     end
     before(:each) do
         @double = instance_double(M_api_db_tambah_post)
