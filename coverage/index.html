@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2021-08-08T06:21:44+07:00">2021-08-08T06:21:44+07:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2021-08-08T10:54:06+07:00">2021-08-08T10:54:06+07:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -30,7 +30,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         9.61
+         9.64
        </span>
     </span> hits/line
     )
@@ -43,8 +43,8 @@
   </div>
 
   <div class="t-line-summary">
-    <b>122</b> relevant lines,
-    <span class="green"><b>122</b> lines covered</span> and
+    <b>121</b> relevant lines,
+    <span class="green"><b>121</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed. </span>
     (<span class="green">
   100.0%
@@ -84,11 +84,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#114f05520ce96c8c79ca90d48614a70e68fece5d" class="src_link" title="models/m_api_db_tambah_post.rb">models/m_api_db_tambah_post.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">26</td>
-            <td class="cell--number">19</td>
-            <td class="cell--number">19</td>
+            <td class="cell--number">29</td>
+            <td class="cell--number">21</td>
+            <td class="cell--number">21</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">1.63</td>
+            <td class="cell--number">1.38</td>
             
           </tr>
         
@@ -139,11 +139,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#f5e27638e2d0f4343f2dfc97ddf8dfd113d3112f" class="src_link" title="spec/models/post_spec.rb">spec/models/post_spec.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">53</td>
-            <td class="cell--number">44</td>
-            <td class="cell--number">44</td>
+            <td class="cell--number">50</td>
+            <td class="cell--number">41</td>
+            <td class="cell--number">41</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">23.80</td>
+            <td class="cell--number">25.46</td>
             
           </tr>
         
@@ -407,8 +407,8 @@
     
 
     <div class="t-line-summary">
-      <b>19</b> relevant lines.
-      <span class="green"><b>19</b> lines covered</span> and
+      <b>21</b> relevant lines.
+      <span class="green"><b>21</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -448,7 +448,7 @@
 
             
 
-            <code class="ruby">    def cek_hashtag(text)</code>
+            <code class="ruby">    def get_hashtag(text)</code>
           </li>
         </div>
       
@@ -459,144 +459,45 @@
 
             
 
-            <code class="ruby">        return false</code>
+            <code class="ruby">        daftarhashtag = text.scan /#([a-zA-Z0-9\_]+)(?: |$)/</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="5">
-            
-            
-
-            
-
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="6">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="7">
+          <li class="covered" data-hits="1" data-linenumber="5">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">    def cek_valid(id_member,text)</code>
+            <code class="ruby">        hashtags = Array.new</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="8">
-            <span class="hits">4</span>
-            
-
-            
-
-            <code class="ruby">        error = {:hasil =&gt; false, :pesan =&gt; &quot;&quot;}</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="4" data-linenumber="9">
-            <span class="hits">4</span>
-            
-
-            
-
-            <code class="ruby">        if id_member == nil or id_member == &quot;&quot;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="10">
+          <li class="covered" data-hits="1" data-linenumber="6">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">            error = {:hasil =&gt; true, :pesan =&gt; &quot;ID member wajib diisi&quot;}</code>
+            <code class="ruby">        daftarhashtag.each do | data |</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="3" data-linenumber="11">
-            <span class="hits">3</span>
-            
-
-            
-
-            <code class="ruby">        elsif text == nil or text == &quot;&quot;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="12">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">            error = {:hasil =&gt; true, :pesan =&gt; &quot;Text wajib diisi&quot;}</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="2" data-linenumber="13">
+          <li class="covered" data-hits="2" data-linenumber="7">
             <span class="hits">2</span>
             
 
             
 
-            <code class="ruby">        elsif text.length &gt; 1000</code>
+            <code class="ruby">            hashtags.push(data.join)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="14">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">            error = {:hasil =&gt; true, :pesan =&gt; &quot;Text maksimal 1000 karakter&quot;}</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="15">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        elsif !cek_hashtag(text)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="16">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">            error = {:hasil =&gt; true, :pesan =&gt; &quot;Hashtag wajib diisi&quot;}</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="17">
+          <li class="never" data-hits="" data-linenumber="8">
             
             
 
@@ -607,18 +508,18 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="18">
-            <span class="hits">4</span>
+          <li class="covered" data-hits="1" data-linenumber="9">
+            <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">        return error</code>
+            <code class="ruby">        return hashtags</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="19">
+          <li class="never" data-hits="" data-linenumber="10">
             
             
 
@@ -629,7 +530,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="20">
+          <li class="never" data-hits="" data-linenumber="11">
             
             
 
@@ -640,51 +541,117 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="21">
+          <li class="covered" data-hits="1" data-linenumber="12">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">    def insert_post(id_member,id_parent_post,text)</code>
+            <code class="ruby">    def cek_valid(id_member,text)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="22">
+          <li class="covered" data-hits="3" data-linenumber="13">
+            <span class="hits">3</span>
+            
+
+            
+
+            <code class="ruby">        error = {:hasil =&gt; false, :pesan =&gt; &quot;&quot;}</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="3" data-linenumber="14">
+            <span class="hits">3</span>
+            
+
+            
+
+            <code class="ruby">        if id_member == nil or id_member == &quot;&quot;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="15">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">        client = M_koneksi_db.new.buat_koneksi_db</code>
+            <code class="ruby">            error = {:hasil =&gt; true, :pesan =&gt; &quot;ID member wajib diisi&quot;}</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="23">
+          <li class="covered" data-hits="2" data-linenumber="16">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">        elsif text == nil or text == &quot;&quot;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="17">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">        client.query(&quot;INSERT INTO post (id_member,id_parent_post,text) values (&#39;#{id_member}&#39;,&#39;#{id_parent_post}&#39;,&#39;#{text}&#39;)&quot;)</code>
+            <code class="ruby">            error = {:hasil =&gt; true, :pesan =&gt; &quot;Text wajib diisi&quot;}</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="24">
+          <li class="covered" data-hits="1" data-linenumber="18">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">        client.last_id</code>
+            <code class="ruby">        elsif text.length &gt; 1000</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="25">
+          <li class="covered" data-hits="1" data-linenumber="19">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">            error = {:hasil =&gt; true, :pesan =&gt; &quot;Text maksimal 1000 karakter&quot;}</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="20">
+            
+            
+
+            
+
+            <code class="ruby">        end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="3" data-linenumber="21">
+            <span class="hits">3</span>
+            
+
+            
+
+            <code class="ruby">        return error</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="22">
             
             
 
@@ -695,7 +662,73 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="26">
+          <li class="never" data-hits="" data-linenumber="23">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="24">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    def insert_post(id_member,id_parent_post,text)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="25">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        client = M_koneksi_db.new.buat_koneksi_db</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="26">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        client.query(&quot;INSERT INTO post (id_member,id_parent_post,text) values (&#39;#{id_member}&#39;,&#39;#{id_parent_post}&#39;,&#39;#{text}&#39;)&quot;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="27">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        client.last_id</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="28">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="29">
             
             
 
@@ -1541,8 +1574,8 @@
     
 
     <div class="t-line-summary">
-      <b>44</b> relevant lines.
-      <span class="green"><b>44</b> lines covered</span> and
+      <b>41</b> relevant lines.
+      <span class="green"><b>41</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -2055,7 +2088,7 @@
 
             
 
-            <code class="ruby">        member = M_raw_post.new(&#39;&#39;,1,&#39;&#39;,&#39;lorem ipsum #generasigigih sir amet&#39;)</code>
+            <code class="ruby">        member = M_raw_post.new(&#39;&#39;,1,&#39;&#39;,&#39;#lorem haha #ipsum-5 jjk #generasigigih sir amet&#39;)</code>
           </li>
         </div>
       
@@ -2066,7 +2099,7 @@
 
             
 
-            <code class="ruby">        allow(@double).to receive(:cek_valid).with(member.id_member,member.text).and_return({:hasil =&gt; true, :pesan =&gt; &quot;Hashtag wajib diisi&quot;})</code>
+            <code class="ruby">        output = M_api_db_tambah_post.new.get_hashtag(member.text)</code>
           </li>
         </div>
       
@@ -2077,45 +2110,12 @@
 
             
 
-            <code class="ruby">        output = @double.cek_valid(member.id_member,member.text)</code>
+            <code class="ruby">        expect(output).to eq([&#39;lorem&#39;,&#39;generasigigih&#39;])</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="49">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        expect(@double).to have_received(:cek_valid).with(member.id_member,member.text)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="50">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        expect(output).to eq({:hasil =&gt; true, :pesan =&gt; &quot;Hashtag wajib diisi&quot;})</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="51">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        M_api_db_tambah_post.new.cek_valid(member.id_member,member.text)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="52">
+          <li class="never" data-hits="" data-linenumber="49">
             
             
 
@@ -2126,7 +2126,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="53">
+          <li class="never" data-hits="" data-linenumber="50">
             
             
 

@@ -42,12 +42,9 @@ describe M_api_db_tambah_post do
         expect(output).to eq({:hasil => true, :pesan => "Text maksimal 1000 karakter"})
         M_api_db_tambah_post.new.cek_valid(member.id_member,member.text)
     end
-    it "should detect hashtag" do
-        member = M_raw_post.new('',1,'','lorem ipsum #generasigigih sir amet')
-        allow(@double).to receive(:cek_valid).with(member.id_member,member.text).and_return({:hasil => true, :pesan => "Hashtag wajib diisi"})
-        output = @double.cek_valid(member.id_member,member.text)
-        expect(@double).to have_received(:cek_valid).with(member.id_member,member.text)
-        expect(output).to eq({:hasil => true, :pesan => "Hashtag wajib diisi"})
-        M_api_db_tambah_post.new.cek_valid(member.id_member,member.text)
+    it "should detect hashtag (alfabet,angka,underscore)" do
+        member = M_raw_post.new('',1,'','#lorem haha #ipsum-5 jjk #generasigigih sir amet')
+        output = M_api_db_tambah_post.new.get_hashtag(member.text)
+        expect(output).to eq(['lorem','generasigigih'])
     end
 end
