@@ -33,6 +33,7 @@ CREATE TABLE `tb_post` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 LOCK TABLES `tb_post` WRITE;
 INSERT INTO `tb_post` (id,id_member,text) VALUES (1,1,'lorem ipsum #gigih'),(2,2,'lorem ipsum #bisa'),(3,3,'lorem #bisa ipsum'),(4,1,'lorem ipsum #generasi'),(5,1,'lorem ipsum #bisa'),(6,1,'lorem #gigih ipsum'),(7,1,'ipsum #gigih ipsum'),(8,1,'#gigih lorem ipsum');
+INSERT INTO `tb_post` (id,id_member,id_parent_post,text) VALUES (9,1,1,'comment ipsum #gigih'),(10,1,1,'comment lorem ipsum #bisa'),(11,3,1,'lorem #bisa ipsum');
 UNLOCK TABLES;
 
 
