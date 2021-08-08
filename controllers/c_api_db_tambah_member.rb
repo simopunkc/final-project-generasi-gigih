@@ -1,23 +1,16 @@
-require "./models/m_koneksi_db"
-require "./models/m_validasi_json"
-require "./models/m_api_db_tambah_member"
-
 class C_api_db_tambah_member
     def cek_param_request(param)
-        respon = 200
-        if defined? param["username"] == nil
-            respon = 400
-        elsif defined? param["email"] == nil
-            respon = 400
-        elsif defined? param["bio"] == nil
-            respon = 400
+        username = (param.key?('username')) ? 0 : 1
+        email = (param.key?('email')) ? 0 : 1
+        bio = (param.key?('bio')) ? 0 : 1
+        error = {:hasil => false, :pesan => ""}
+        if username == 1
+            error = {:hasil => true, :pesan => "Parameter username tidak ditemukan"}
+        elsif email == 1
+            error = {:hasil => true, :pesan => "Parameter email tidak ditemukan"}
+        elsif bio == 1
+            error = {:hasil => true, :pesan => "Parameter bio tidak ditemukan"}
         end
-        return respon
-    end
-
-    def proses(params)
-        model = M_api_db_tambah_member.new
-        error = model.
-        error = model.cek_valid(username,email,bio)
+        return error
     end
 end
