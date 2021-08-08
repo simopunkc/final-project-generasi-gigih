@@ -75,4 +75,13 @@ describe M_api_db_tambah_post do
         expect(output).to eq(tag.id)
         M_api_db_tambah_post.new.get_id_hashtag(tag.hashtag)
     end
+    it "should duplicate hashtag on post" do
+        tag = M_raw_hashtag.new(1,'gigih')
+        post = M_raw_post.new(1)
+        allow(@double).to receive(:cek_duplikat_hashtag).with(tag.id,post.id).and_return(1)
+        output = @double.cek_duplikat_hashtag(tag.id,post.id)
+        expect(@double).to have_received(:cek_duplikat_hashtag).with(tag.id,post.id)
+        expect(output).to eq(1)
+        M_api_db_tambah_post.new.cek_duplikat_hashtag(tag.id,post.id)
+    end
 end

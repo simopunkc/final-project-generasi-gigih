@@ -32,7 +32,7 @@ CREATE TABLE `tb_post` (
   FULLTEXT KEY `text` (`text`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 LOCK TABLES `tb_post` WRITE;
-INSERT INTO `tb_post` (id,id_member,text) VALUES (1,1,'lorem ipsum #gigih'),(2,2,'lorem ipsum 2'),(3,3,'lorem ipsum 3');
+INSERT INTO `tb_post` (id,id_member,text) VALUES (1,1,'lorem ipsum #gigih'),(2,2,'lorem ipsum #bisa'),(3,3,'lorem #bisa ipsum'),(4,1,'lorem ipsum #generasi'),(5,1,'lorem ipsum #bisa'),(6,1,'lorem #gigih ipsum'),(7,1,'ipsum #gigih ipsum'),(8,1,'#gigih lorem ipsum');
 UNLOCK TABLES;
 
 
@@ -56,5 +56,5 @@ CREATE TABLE `tb_hashtag_post` (
   FOREIGN KEY (`id_post`) REFERENCES tb_post(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 LOCK TABLES `tb_hashtag_post` WRITE;
-INSERT INTO `tb_hashtag_post` (id_hashtag,id_post) VALUES (1,1);
+INSERT INTO `tb_hashtag_post` (id_hashtag,id_post) VALUES (1,1),(3,2),(3,3),(2,4),(3,5),(1,6),(1,7),(1,8);
 UNLOCK TABLES;

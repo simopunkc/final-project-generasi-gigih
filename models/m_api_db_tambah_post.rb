@@ -12,6 +12,16 @@ class M_api_db_tambah_post
         client.last_id
     end
 
+    def cek_duplikat_hashtag(id_hashtag, id_post)
+        client = M_koneksi_db.new.buat_koneksi_db
+        rawData = client.query("SELECT COUNT(id_post) FROM tb_hashtag_post WHERE id_hashtag=#{id_hashtag} AND id_post=#{id_post} LIMIT 1")
+        jumlah = 0
+        rawData.each do | data |
+            jumlah = data["COUNT(id_post)"]
+        end
+        return jumlah
+    end
+
     def get_id_hashtag(hashtag)
         client = M_koneksi_db.new.buat_koneksi_db
         rawData = client.query("SELECT id FROM tb_hashtag WHERE hashtag='#{hashtag}' LIMIT 1")
