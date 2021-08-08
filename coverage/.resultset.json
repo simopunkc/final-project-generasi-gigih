@@ -77,13 +77,13 @@
         "lines": [
           1,
           1,
-          6,
+          7,
           null,
           null,
           null,
           null,
           null,
-          6,
+          7,
           null,
           null
         ]
@@ -281,7 +281,42 @@
           1,
           1,
           1,
-          0,
+          1,
+          null,
+          1,
+          null,
+          null
+        ]
+      },
+      "/var/www/html/final-projek-generasi-gigih/spec/models/trending_hashtag_spec.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/var/www/html/final-projek-generasi-gigih/models/m_api_db_trending_hashtag.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
           null,
           1,
           null,
@@ -289,6 +324,6 @@
         ]
       }
     },
-    "timestamp": 1628399381
+    "timestamp": 1628402398
   }
 }
