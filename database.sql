@@ -59,3 +59,28 @@ CREATE TABLE `tb_hashtag_post` (
 LOCK TABLES `tb_hashtag_post` WRITE;
 INSERT INTO `tb_hashtag_post` (id_hashtag,id_post) VALUES (1,1),(3,2),(3,3),(2,4),(3,5),(1,6),(1,7),(1,8);
 UNLOCK TABLES;
+
+
+DROP TABLE IF EXISTS `tb_media`;
+CREATE TABLE `tb_media` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `lokasi` varchar(255) NOT NULL,
+  `ext` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `lokasi` (`lokasi`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+LOCK TABLES `tb_media` WRITE;
+INSERT INTO `tb_media` (id,lokasi,ext) VALUES (1,'upload/2021-August-09/post1.jpg','.jpg');
+UNLOCK TABLES;
+
+
+DROP TABLE IF EXISTS `tb_post_media`;
+CREATE TABLE `tb_post_media` (
+  `id_post` int(10) NOT NULL,
+  `id_media` int(10) NOT NULL,
+  FOREIGN KEY (`id_post`) REFERENCES tb_post(`id`),
+  FOREIGN KEY (`id_media`) REFERENCES tb_media(`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+LOCK TABLES `tb_post_media` WRITE;
+INSERT INTO `tb_post_media` (id_post,id_media) VALUES (1,1);
+UNLOCK TABLES;
