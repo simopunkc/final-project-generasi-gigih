@@ -28,4 +28,12 @@ describe C_api_db_tambah_member do
         expect(output).to eq({:hasil => true, :pesan => "Parameter bio tidak ditemukan"})
         C_api_db_tambah_member.new.cek_param_request(parameter)
     end
+    it "should valid param json" do
+        parameter = {"username"=>"reserved","email"=>"reserved","bio"=>"reserved"}
+        allow(@double).to receive(:cek_param_request).with(parameter).and_return({:hasil => false, :pesan => ""})
+        output = @double.cek_param_request(parameter)
+        expect(@double).to have_received(:cek_param_request).with(parameter)
+        expect(output).to eq({:hasil => false, :pesan => ""})
+        C_api_db_tambah_member.new.cek_param_request(parameter)
+    end
 end
