@@ -15,6 +15,7 @@ CREATE TABLE `tb_member` (
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 LOCK TABLES `tb_member` WRITE;
+INSERT INTO `tb_member` (id,username,email,bio) VALUES (1,'admin','admin@web.com','saya admin lho'),(2,'user2','user2@web.com','saya user 2'),(3,'user3','user3@web.com','saya user 3');
 UNLOCK TABLES;
 
 
@@ -31,6 +32,7 @@ CREATE TABLE `tb_post` (
   FULLTEXT KEY `text` (`text`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 LOCK TABLES `tb_post` WRITE;
+INSERT INTO `tb_post` (id,id_member,text) VALUES (1,1,'lorem ipsum #gigih'),(2,2,'lorem ipsum 2'),(3,3,'lorem ipsum 3');
 UNLOCK TABLES;
 
 
@@ -54,4 +56,5 @@ CREATE TABLE `tb_hashtag_post` (
   FOREIGN KEY (`id_post`) REFERENCES tb_post(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 LOCK TABLES `tb_hashtag_post` WRITE;
+INSERT INTO `tb_hashtag_post` (id_hashtag,id_post) VALUES (1,1);
 UNLOCK TABLES;
