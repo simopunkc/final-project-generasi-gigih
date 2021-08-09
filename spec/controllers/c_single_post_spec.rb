@@ -28,4 +28,12 @@ describe C_api_db_single_post do
         expect(output).to eq({:hasil => true, :pesan => "ID post harus integer"})
         C_api_db_single_post.new.cek_valid(parameter[:id])
     end
+    it "should valid value param" do
+        parameter = {:id=>"1"}
+        allow(@double).to receive(:cek_valid).with(parameter[:id]).and_return({:hasil => false, :pesan => ""})
+        output = @double.cek_valid(parameter[:id])
+        expect(@double).to have_received(:cek_valid).with(parameter[:id])
+        expect(output).to eq({:hasil => false, :pesan => ""})
+        C_api_db_single_post.new.cek_valid(parameter[:id])
+    end
 end
