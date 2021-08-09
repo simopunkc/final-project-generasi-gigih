@@ -13,19 +13,19 @@ describe C_api_db_single_post do
         C_api_db_single_post.new.cek_param_request(parameter)
     end
     it "should blank value id post" do
-        post = M_raw_post.new('','',1,'lorem ipsum','')
-        allow(@double).to receive(:cek_valid).with(post.id).and_return({:hasil => true, :pesan => "ID post wajib diisi"})
-        output = @double.cek_valid(post.id)
-        expect(@double).to have_received(:cek_valid).with(post.id)
+        parameter = {:id=>""}
+        allow(@double).to receive(:cek_valid).with(parameter[:id]).and_return({:hasil => true, :pesan => "ID post wajib diisi"})
+        output = @double.cek_valid(parameter[:id])
+        expect(@double).to have_received(:cek_valid).with(parameter[:id])
         expect(output).to eq({:hasil => true, :pesan => "ID post wajib diisi"})
-        C_api_db_single_post.new.cek_valid(post.id)
+        C_api_db_single_post.new.cek_valid(parameter[:id])
     end
     it "should integer value id post" do
-        post = M_raw_post.new('a','a',1,'lorem ipsum','')
-        allow(@double).to receive(:cek_valid).with(post.id).and_return({:hasil => true, :pesan => "ID post harus integer"})
-        output = @double.cek_valid(post.id)
-        expect(@double).to have_received(:cek_valid).with(post.id)
+        parameter = {:id=>"a"}
+        allow(@double).to receive(:cek_valid).with(parameter[:id]).and_return({:hasil => true, :pesan => "ID post harus integer"})
+        output = @double.cek_valid(parameter[:id])
+        expect(@double).to have_received(:cek_valid).with(parameter[:id])
         expect(output).to eq({:hasil => true, :pesan => "ID post harus integer"})
-        C_api_db_single_post.new.cek_valid(post.id)
+        C_api_db_single_post.new.cek_valid(parameter[:id])
     end
 end
