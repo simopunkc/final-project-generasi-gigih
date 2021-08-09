@@ -1,0 +1,17 @@
+<h1># Daftar Trending</h1>
+<table>
+    <thead>
+        <th>id</th>
+        <th>hashtag</th>
+        <th>aksi</th>
+    </thead>
+    <tbody>
+    <% trending_hashtag.each do |data| %>
+    <tr>
+        <td><%= data.id %></td>
+        <td><%= data.hashtag %></td>
+        <td><a href="/hashtag/<%= data.id %>" title="Hashtag <%= data.id %>">Show</a></td>
+    </tr>
+    <% end %>
+    </tbody>
+</table>

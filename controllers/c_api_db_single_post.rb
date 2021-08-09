@@ -21,4 +21,9 @@ class C_api_db_single_post
         end
         return error
     end
+
+    def print_output(single_post)
+        view = ERB.new(File.read("./views/v_api_db_single_post.erb"))
+        view.result(binding)
+    end
 end

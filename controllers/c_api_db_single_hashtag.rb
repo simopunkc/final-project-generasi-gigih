@@ -21,4 +21,9 @@ class C_api_db_single_hashtag
         end
         return error
     end
+
+    def print_output(kumpul_post)
+        view = ERB.new(File.read("./views/v_api_db_single_hashtag.erb"))
+        view.result(binding)
+    end
 end

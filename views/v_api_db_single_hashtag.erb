@@ -1,0 +1,23 @@
+<h1># Single Hashtag</h1>
+<table>
+    <thead>
+        <th>id</th>
+        <th>id_member</th>
+        <th>id_parent_post</th>
+        <th>text</th>
+        <th>waktu</th>
+        <th>aksi</th>
+    </thead>
+    <tbody>
+    <% kumpul_post.each do |data| %>
+    <tr>
+        <td><%= data.id %></td>
+        <td><%= data.id_member %></td>
+        <td><%= data.id_parent_post %></td>
+        <td><%= data.text %></td>
+        <td><%= data.waktu %></td>
+        <td><a href="/post/<%= data.id %>" title="Post <%= data.id %>">Show</a></td>
+    </tr>
+    <% end %>
+    </tbody>
+</table>

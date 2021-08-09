@@ -1,4 +1,8 @@
+require "./models/m_modules/m_detail_hashtag"
+
 class M_api_db_trending_hashtag
+    include M_detail_hashtag
+
     def get_trending_hashtag
         client = M_koneksi_db.new.buat_koneksi_db
         rawData = client.query("SELECT DISTINCT tb_hashtag_post.id_hashtag as id_hashtag, tb_post.waktu as waktu FROM tb_hashtag_post LEFT JOIN tb_post ON tb_hashtag_post.id_post = tb_post.id WHERE waktu > (NOW() - INTERVAL 24 HOUR) GROUP BY tb_hashtag_post.id_hashtag ORDER BY COUNT(tb_hashtag_post.id_hashtag) DESC LIMIT 5")

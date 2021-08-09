@@ -3,15 +3,33 @@ require 'sinatra'
 require 'mysql2'
 set :public_folder, File.dirname(__FILE__)
 set :bind, "0.0.0.0"
-# require "./controllers/c_output"
-# require "./controllers/c_error"
 require "./models/m_koneksi_db"
+require "./models/m_raw_post"
+require "./models/m_raw_hashtag"
+require "./models/m_raw_media"
+require "./models/m_raw_member"
+require "./controllers/c_api_db_trending_hashtag"
+require "./models/m_api_db_trending_hashtag"
 require "./controllers/c_api_db_tambah_member"
 require "./models/m_api_db_tambah_member"
 require "./controllers/c_api_db_tambah_post"
 require "./models/m_api_db_tambah_post"
 require "./controllers/c_api_db_single_hashtag"
 require "./models/m_api_db_single_hashtag"
+require "./controllers/c_api_db_single_post"
+require "./models/m_api_db_single_post"
+
+get '/' do
+    controller = C_api_db_trending_hashtag.new
+    model = M_api_db_trending_hashtag.new
+    daftar_hashtag = model.get_trending_hashtag
+    raw = Array.new
+    daftar_hashtag.each do |data|
+        trending_hashtag = model.get_detail_hashtag(data)
+        raw.push(controller.print_output(trending_hashtag))
+    end
+    return raw
+end
 
 post '/register' do
     parameter = JSON.parse(request.body.read)
@@ -79,127 +97,31 @@ get '/hashtag/:id' do
     kumpul_post = Array.new
     daftar_post.each do | data |
         post = model.get_detail_post(data)
-        kumpul_post.push(post)
+        kumpul_post.push(controller.print_output(post))
     end
-    kumpul_post.inspect
+    return kumpul_post
 end
 
-
-# post '/items/create' do
-#     output = C_db_tambah_item.simpan_item(params)
-#     if output.is_a?(String)
-#         redirect "/"
-#     else
-#         C_error.cetak_error(output)
-#     end
-# end
-
-# get '/items/:id/edit' do
-#     output = C_edit_item.cetak_edit_item(params)
-#     if output.is_a?(String)
-#         C_output.cetak_output(output)
-#     else
-#         C_error.cetak_error(output)
-#     end
-# end
-
-# post '/items/:id/edit' do
-#     output = C_db_edit_item.simpan_item(params)
-#     if output.is_a?(String)
-#         redirect "/"
-#     else
-#         C_error.cetak_error(output)
-#     end
-# end
-
-
-
-# get '/items/:id/delete' do
-#     output = C_db_delete_item.delete_item(params)
-#     if output.is_a?(String)
-#         redirect "/"
-#     else
-#         C_error.cetak_error(output)
-#     end
-# end
-
-# get '/category/' do
-#     output = C_daftar_kategori.cetak_daftar_kategori
-#     if output.is_a?(String)
-#         C_output.cetak_output(output)
-#     else
-#         C_error.cetak_error(output)
-#     end
-# end
-
-# get '/category/new' do
-#     output = C_tambah_kategori.cetak_tambah_kategori
-#     if output.is_a?(String)
-#         C_output.cetak_output(output)
-#     else
-#         C_error.cetak_error(output)
-#     end
-# end
-
-# get '/category/:id' do
-#     output = C_single_kategori.cetak_single_kategori(params)
-#     if output.is_a?(String)
-#         C_output.cetak_output(output)
-#     else
-#         C_error.cetak_error(output)
-#     end
-# end
-
-# get '/category/:id/edit' do
-#     output = C_edit_kategori.cetak_edit_kategori(params)
-#     if output.is_a?(String)
-#         C_output.cetak_output(output)
-#     else
-#         C_error.cetak_error(output)
-#     end
-# end
-
-# get '/category/:id/delete' do
-#     output = C_db_delete_kategori.delete_kategori(params)
-#     if output.is_a?(String)
-#         redirect "/category/"
-#     else
-#         C_error.cetak_error(output)
-#     end
-# end
-
-# post '/category/create' do
-#     output = C_db_tambah_kategori.simpan_kategori(params)
-#     if output.is_a?(String)
-#         redirect "/category/"
-#     else
-#         C_error.cetak_error(output)
-#     end
-# end
-
-# post '/category/:id/edit' do
-#     output = C_db_edit_kategori.simpan_kategori(params)
-#     if output.is_a?(String)
-#         redirect "/category/"
-#     else
-#         C_error.cetak_error(output)
-#     end
-# end
-
-# get '/items/:id/category/' do
-#     output = C_daftar_kategori_pada_item.cetak_daftar_kategori_pada_item(params)
-#     if output.is_a?(String)
-#         C_output.cetak_output(output)
-#     else
-#         C_error.cetak_error(output)
-#     end
-# end
-
-# get '/items/:id/category/:kate_id/delete' do
-#     output = C_db_delete_kategori_pada_item.delete_kategori(params)
-#     if output.is_a?(String)
-#         redirect "/items/#{params[:id]}/category/"
-#     else
-#         C_error.cetak_error(output)
-#     end
-# end
+get '/post/:id' do
+    controller = C_api_db_single_post.new
+    error_request = controller.cek_param_request(params)
+    if error_request[:hasil] == true
+        return JSON.generate(error_request)
+    end
+    error_value = controller.cek_valid(params[:id])
+    if error_value[:hasil] == true
+        return JSON.generate(error_value)
+    end
+    model = M_api_db_single_post.new
+    data_post = model.get_detail_post(params[:id])
+    data_comment = Array.new
+    daftar_comment = model.get_all_post_comment(params[:id])
+    daftar_comment.each do |comment|
+        komen = model.get_detail_post(comment)
+        data_comment.push(komen)
+    end
+    single_post = Array.new
+    single_post.push(data_post)
+    single_post.push(data_comment)
+    return controller.print_output(single_post)
+end

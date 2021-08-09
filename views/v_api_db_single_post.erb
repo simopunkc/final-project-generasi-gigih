@@ -1,0 +1,47 @@
+<h1># Single Post</h1>
+<% single_post[0].each do |data| %>
+<table>
+    <thead>
+        <th>id</th>
+        <th>id_member</th>
+        <th>id_parent_post</th>
+        <th>text</th>
+        <th>waktu</th>
+        <th>aksi</th>
+    </thead>
+    <tbody>
+    <tr>
+        <td><%= data.id %></td>
+        <td><%= data.id_member %></td>
+        <td><%= data.id_parent_post %></td>
+        <td><%= data.text %></td>
+        <td><%= data.waktu %></td>
+        <td><a href="/post/<%= data.id %>" title="Post <%= data.id %>">Show</a></td>
+    </tr>
+    </tbody>
+</table>
+<% end %>
+<% single_post[1].each do |data_komen| %>
+<table>
+    <thead>
+        <th>id comment</th>
+        <th>id_member</th>
+        <th>id_parent_post</th>
+        <th>text</th>
+        <th>waktu</th>
+        <th>aksi</th>
+    </thead>
+    <tbody>
+    <% data_komen.each do |data| %>
+    <tr>
+        <td><%= data.id %></td>
+        <td><%= data.id_member %></td>
+        <td><%= data.id_parent_post %></td>
+        <td><%= data.text %></td>
+        <td><%= data.waktu %></td>
+        <td><a href="/post/<%= data.id %>" title="Post <%= data.id %>">Show</a></td>
+    </tr>
+    <% end %>
+    </tbody>
+</table>
+<% end %>
