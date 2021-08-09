@@ -28,14 +28,18 @@ set :bind, "0.0.0.0"
 
 post '/register' do
     parameter = JSON.parse(request.body.read)
-    cek = C_api_db_tambah_member.cek_param_request(parameter)
-    
-    # output = C_api_db_tambah_member.cetak_homepage
-    # if output.is_a?(String)
-    #     C_output.cetak_output(output)
-    # else
-    #     C_error.cetak_error(output)
-    # end
+    controller = C_api_db_tambah_member.new
+    error_request = controller.cek_param_request(param)
+    if error_request[:hasil] == true
+        return JSON.generate(error_request)
+    end
+    model = M_api_db_tambah_member.new
+    error_value = model.cek_valid(param["username"],param["email"],param["bio"])
+    if error_value[:hasil] == true
+        return JSON.generate(error_value)
+    end
+    last_id = model.insert_member(param["username"],param["email"],param["bio"])
+    return JSON.generate({:id=>last_id,:pesan=>"success"})
 end
 
 # get '/items/new' do
