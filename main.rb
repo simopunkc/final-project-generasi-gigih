@@ -8,6 +8,8 @@ set :bind, "0.0.0.0"
 require "./models/m_koneksi_db"
 require "./controllers/c_api_db_tambah_member"
 require "./models/m_api_db_tambah_member"
+require "./controllers/c_api_db_tambah_post"
+require "./models/m_api_db_tambah_post"
 
 post '/register' do
     parameter = JSON.parse(request.body.read)
@@ -36,7 +38,22 @@ post '/posting' do
     if error_request[:hasil] == true
         return JSON.generate(error_request)
     end
-    error_value = controller.cek_valid(parameter["username"],parameter["email"],parameter["bio"])
+    error_value = controller.cek_valid(parameter["id_member"],parameter["text"])
+    if error_value[:hasil] == true
+        return JSON.generate(error_value)
+    end
+    model = M_api_db_tambah_post.new
+    id_post = model.insert_post(parameter["id_member"],parameter["id_parent_post"],parameter["text"])
+    ambil_hashtag = controller.get_hashtag(parameter["text"])
+    if ambil_hashtag.size > 0
+        ambil_hashtag.each do |hashtag|
+            id_hashtag = model.get_id_hashtag(hashtag)
+            if id_hashtag == 0
+                id_hashtag = model.insert_hashtag(hashtag)
+            end
+            if model.cek_duplikat_hashtag(id_hashtag)
+        end
+    end
 end
 
 # post '/items/create' do

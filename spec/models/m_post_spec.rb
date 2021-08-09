@@ -1,6 +1,7 @@
 require "./models/m_raw_post"
 require "./models/m_raw_hashtag"
 require "./models/m_raw_media"
+require "./models/m_raw_member"
 require "./models/m_api_db_tambah_post"
 
 describe M_api_db_tambah_post do
@@ -62,6 +63,14 @@ describe M_api_db_tambah_post do
     end
     before(:each) do
         @double = instance_double(M_api_db_tambah_post)
+    end
+    it "should valid id_member" do
+        member = M_raw_member.new(1,'','','')
+        allow(@double).to receive(:cek_id_member).with(member.id).and_return(1)
+        output = @double.cek_id_member(member.id)
+        expect(@double).to have_received(:cek_id_member).with(member.id)
+        expect(output).to eq(1)
+        M_api_db_tambah_post.new.cek_id_member(member.id)
     end
     it "should detect id hashtag" do
         tag = M_raw_hashtag.new(1,'gigih')

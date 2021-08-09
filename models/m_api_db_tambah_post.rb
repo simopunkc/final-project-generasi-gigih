@@ -45,6 +45,16 @@ class M_api_db_tambah_post
         return id_hash
     end
 
+    def cek_id_member(id_member)
+        client = M_koneksi_db.new.buat_koneksi_db
+        rawData = client.query("SELECT COUNT(id) FROM tb_member WHERE id=#{id_member} LIMIT 1")
+        jumlah = 0
+        rawData.each do | data |
+            jumlah = data["COUNT(id)"]
+        end
+        return jumlah
+    end
+
     def insert_post(id_member,id_parent_post,text)
         client = M_koneksi_db.new.buat_koneksi_db
         client.query("INSERT INTO tb_post (id_member,id_parent_post,text) values ('#{id_member}','#{id_parent_post}','#{text}')")
