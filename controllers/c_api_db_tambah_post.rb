@@ -7,6 +7,7 @@ class C_api_db_tambah_post
         id_member = (param.key?('id_member')) ? 0 : 1
         id_parent_post = (param.key?('id_parent_post')) ? 0 : 1
         text = (param.key?('text')) ? 0 : 1
+        media = (param.key?('media')) ? 0 : 1
         error = {:hasil => false, :pesan => ""}
         if id_member == 1
             error = {:hasil => true, :pesan => "Parameter id_member tidak ditemukan"}
@@ -14,6 +15,8 @@ class C_api_db_tambah_post
             error = {:hasil => true, :pesan => "Parameter id_parent_post tidak ditemukan"}
         elsif text == 1
             error = {:hasil => true, :pesan => "Parameter text tidak ditemukan"}
+        elsif media == 1
+            error = {:hasil => true, :pesan => "Parameter media tidak ditemukan"}
         end
         return error
     end

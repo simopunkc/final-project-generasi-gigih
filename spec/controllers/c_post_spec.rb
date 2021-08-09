@@ -5,7 +5,7 @@ describe C_api_db_tambah_post do
         @double = instance_double(C_api_db_tambah_post)
     end
     it "should blank param id_member" do
-        parameter = {"id_parent_post"=>"reserved","text"=>"reserved"}
+        parameter = {"id_parent_post"=>"reserved","text"=>"reserved","media"=>"reserved"}
         allow(@double).to receive(:cek_param_request).with(parameter).and_return({:hasil => true, :pesan => "Parameter id_member tidak ditemukan"})
         output = @double.cek_param_request(parameter)
         expect(@double).to have_received(:cek_param_request).with(parameter)
@@ -13,7 +13,7 @@ describe C_api_db_tambah_post do
         C_api_db_tambah_post.new.cek_param_request(parameter)
     end
     it "should blank param id_parent_post" do
-        parameter = {"id_member"=>"reserved","text"=>"reserved"}
+        parameter = {"id_member"=>"reserved","text"=>"reserved","media"=>"reserved"}
         allow(@double).to receive(:cek_param_request).with(parameter).and_return({:hasil => true, :pesan => "Parameter id_parent_post tidak ditemukan"})
         output = @double.cek_param_request(parameter)
         expect(@double).to have_received(:cek_param_request).with(parameter)
@@ -21,15 +21,23 @@ describe C_api_db_tambah_post do
         C_api_db_tambah_post.new.cek_param_request(parameter)
     end
     it "should blank param text" do
-        parameter = {"id_member"=>"reserved","id_parent_post"=>"reserved"}
+        parameter = {"id_member"=>"reserved","id_parent_post"=>"reserved","media"=>"reserved"}
         allow(@double).to receive(:cek_param_request).with(parameter).and_return({:hasil => true, :pesan => "Parameter text tidak ditemukan"})
         output = @double.cek_param_request(parameter)
         expect(@double).to have_received(:cek_param_request).with(parameter)
         expect(output).to eq({:hasil => true, :pesan => "Parameter text tidak ditemukan"})
         C_api_db_tambah_post.new.cek_param_request(parameter)
     end
-    it "should complete param json" do
+    it "should blank param media" do
         parameter = {"id_member"=>"reserved","id_parent_post"=>"reserved","text"=>"reserved"}
+        allow(@double).to receive(:cek_param_request).with(parameter).and_return({:hasil => true, :pesan => "Parameter media tidak ditemukan"})
+        output = @double.cek_param_request(parameter)
+        expect(@double).to have_received(:cek_param_request).with(parameter)
+        expect(output).to eq({:hasil => true, :pesan => "Parameter media tidak ditemukan"})
+        C_api_db_tambah_post.new.cek_param_request(parameter)
+    end
+    it "should complete param json" do
+        parameter = {"id_member"=>"reserved","id_parent_post"=>"reserved","text"=>"reserved","media"=>"reserved"}
         allow(@double).to receive(:cek_param_request).with(parameter).and_return({:hasil => false, :pesan => ""})
         output = @double.cek_param_request(parameter)
         expect(@double).to have_received(:cek_param_request).with(parameter)
