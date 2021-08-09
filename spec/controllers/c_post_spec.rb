@@ -28,14 +28,14 @@ describe C_api_db_tambah_post do
         expect(output).to eq({:hasil => true, :pesan => "Parameter text tidak ditemukan"})
         C_api_db_tambah_post.new.cek_param_request(parameter)
     end
-    # it "should complete param json" do
-    #     parameter = {"id_member"=>"reserved","id_parent_post"=>"reserved","text"=>"reserved"}
-    #     allow(@double).to receive(:cek_param_request).with(parameter).and_return({:hasil => false, :pesan => ""})
-    #     output = @double.cek_param_request(parameter)
-    #     expect(@double).to have_received(:cek_param_request).with(parameter)
-    #     expect(output).to eq({:hasil => false, :pesan => ""})
-    #     C_api_db_tambah_post.new.cek_param_request(parameter)
-    # end
+    it "should complete param json" do
+        parameter = {"id_member"=>"reserved","id_parent_post"=>"reserved","text"=>"reserved"}
+        allow(@double).to receive(:cek_param_request).with(parameter).and_return({:hasil => false, :pesan => ""})
+        output = @double.cek_param_request(parameter)
+        expect(@double).to have_received(:cek_param_request).with(parameter)
+        expect(output).to eq({:hasil => false, :pesan => ""})
+        C_api_db_tambah_post.new.cek_param_request(parameter)
+    end
     it "should create folder upload" do
         tgl = '2021-August-09'
         direktori = 'upload/'+tgl
