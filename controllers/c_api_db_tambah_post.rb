@@ -1,8 +1,11 @@
 require 'fileutils'
 require 'date'
 require "./models/m_koneksi_db"
+require "./controllers/c_modules/c_cek_integer"
 
 class C_api_db_tambah_post
+    include C_cek_integer
+
     def cek_param_request(param)
         id_member = (param.key?('id_member')) ? 0 : 1
         id_parent_post = (param.key?('id_parent_post')) ? 0 : 1
@@ -33,15 +36,23 @@ class C_api_db_tambah_post
         daftarhashtag = text.scan /#([a-zA-Z0-9\_]+)(?: |$)/
         hashtags = Array.new
         daftarhashtag.each do | data |
-            hashtags.push(data.join)
+            tag = data.join.downcase
+            hashtags.push(tag)
         end
-        return hashtags
+        return hashtags.uniq
     end
 
-    def cek_valid(id_member,text)
+    def cek_valid(id_member,id_parent_post,text)
+        model = M_api_db_tambah_post.new
         error = {:hasil => false, :pesan => ""}
         if id_member == nil or id_member == ""
             error = {:hasil => true, :pesan => "ID member wajib diisi"}
+        elsif cek_integer?(id_member) == false
+            error = {:hasil => true, :pesan => "ID member harus integer"}
+        elsif model.cek_id_member(id_member) == 0
+            error = {:hasil => true, :pesan => "ID member tidak terdaftar"}
+        elsif cek_integer?(id_parent_post) == false
+            error = {:hasil => true, :pesan => "ID parent post harus integer"}
         elsif text == nil or text == ""
             error = {:hasil => true, :pesan => "Text wajib diisi"}
         elsif text.length > 1000

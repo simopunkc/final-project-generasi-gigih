@@ -1,4 +1,3 @@
-require "./models/m_raw_member"
 require "./controllers/c_api_db_tambah_member"
 
 describe C_api_db_tambah_member do

@@ -1,7 +1,3 @@
-require "./models/m_raw_post"
-require "./models/m_raw_hashtag"
-require "./models/m_raw_media"
-require "./models/m_raw_member"
 require "./models/m_api_db_tambah_post"
 
 describe M_api_db_tambah_post do

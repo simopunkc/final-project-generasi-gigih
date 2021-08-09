@@ -54,35 +54,59 @@ describe C_api_db_tambah_post do
         C_api_db_tambah_post.new.create_folder_upload
     end
     it "should blank ID member" do
-        post = M_raw_post.new('','','','lorem ipsum','')
-        allow(@double).to receive(:cek_valid).with(post.id_member,post.text).and_return({:hasil => true, :pesan => "ID member wajib diisi"})
-        output = @double.cek_valid(post.id_member,post.text)
-        expect(@double).to have_received(:cek_valid).with(post.id_member,post.text)
+        post = M_raw_post.new('','',1,'lorem ipsum','')
+        allow(@double).to receive(:cek_valid).with(post.id_member,post.id_parent_post,post.text).and_return({:hasil => true, :pesan => "ID member wajib diisi"})
+        output = @double.cek_valid(post.id_member,post.id_parent_post,post.text)
+        expect(@double).to have_received(:cek_valid).with(post.id_member,post.id_parent_post,post.text)
         expect(output).to eq({:hasil => true, :pesan => "ID member wajib diisi"})
-        C_api_db_tambah_post.new.cek_valid(post.id_member,post.text)
+        C_api_db_tambah_post.new.cek_valid(post.id_member,post.id_parent_post,post.text)
+    end
+    it "should integer ID member" do
+        post = M_raw_post.new('','a',1,'lorem ipsum','')
+        allow(@double).to receive(:cek_valid).with(post.id_member,post.id_parent_post,post.text).and_return({:hasil => true, :pesan => "ID member harus integer"})
+        output = @double.cek_valid(post.id_member,post.id_parent_post,post.text)
+        expect(@double).to have_received(:cek_valid).with(post.id_member,post.id_parent_post,post.text)
+        expect(output).to eq({:hasil => true, :pesan => "ID member harus integer"})
+        C_api_db_tambah_post.new.cek_valid(post.id_member,post.id_parent_post,post.text)
+    end
+    it "should id_member tidak terdaftar" do
+        post = M_raw_post.new('',0,1,'lorem ipsum','')
+        allow(@double).to receive(:cek_valid).with(post.id_member,post.id_parent_post,post.text).and_return({:hasil => true, :pesan => "ID member tidak terdaftar"})
+        output = @double.cek_valid(post.id_member,post.id_parent_post,post.text)
+        expect(@double).to have_received(:cek_valid).with(post.id_member,post.id_parent_post,post.text)
+        expect(output).to eq({:hasil => true, :pesan => "ID member tidak terdaftar"})
+        C_api_db_tambah_post.new.cek_valid(post.id_member,post.id_parent_post,post.text)
+    end
+    it "should integer ID parent post" do
+        post = M_raw_post.new('',1,'a','lorem ipsum','')
+        allow(@double).to receive(:cek_valid).with(post.id_member,post.id_parent_post,post.text).and_return({:hasil => true, :pesan => "ID parent post harus integer"})
+        output = @double.cek_valid(post.id_member,post.id_parent_post,post.text)
+        expect(@double).to have_received(:cek_valid).with(post.id_member,post.id_parent_post,post.text)
+        expect(output).to eq({:hasil => true, :pesan => "ID parent post harus integer"})
+        C_api_db_tambah_post.new.cek_valid(post.id_member,post.id_parent_post,post.text)
     end
     it "should blank text" do
-        post = M_raw_post.new('',1,'','','')
-        allow(@double).to receive(:cek_valid).with(post.id_member,post.text).and_return({:hasil => true, :pesan => "Text wajib diisi"})
-        output = @double.cek_valid(post.id_member,post.text)
-        expect(@double).to have_received(:cek_valid).with(post.id_member,post.text)
+        post = M_raw_post.new('',1,1,'','')
+        allow(@double).to receive(:cek_valid).with(post.id_member,post.id_parent_post,post.text).and_return({:hasil => true, :pesan => "Text wajib diisi"})
+        output = @double.cek_valid(post.id_member,post.id_parent_post,post.text)
+        expect(@double).to have_received(:cek_valid).with(post.id_member,post.id_parent_post,post.text)
         expect(output).to eq({:hasil => true, :pesan => "Text wajib diisi"})
-        C_api_db_tambah_post.new.cek_valid(post.id_member,post.text)
+        C_api_db_tambah_post.new.cek_valid(post.id_member,post.id_parent_post,post.text)
     end
     it "should limit 1000" do
         text = 'A'
         until text.length > 1000 do
             text += 'A'
         end
-        post = M_raw_post.new('',1,'',text,'')
-        allow(@double).to receive(:cek_valid).with(post.id_member,post.text).and_return({:hasil => true, :pesan => "Text maksimal 1000 karakter"})
-        output = @double.cek_valid(post.id_member,post.text)
-        expect(@double).to have_received(:cek_valid).with(post.id_member,post.text)
+        post = M_raw_post.new('',1,1,text,'')
+        allow(@double).to receive(:cek_valid).with(post.id_member,post.id_parent_post,post.text).and_return({:hasil => true, :pesan => "Text maksimal 1000 karakter"})
+        output = @double.cek_valid(post.id_member,post.id_parent_post,post.text)
+        expect(@double).to have_received(:cek_valid).with(post.id_member,post.id_parent_post,post.text)
         expect(output).to eq({:hasil => true, :pesan => "Text maksimal 1000 karakter"})
-        C_api_db_tambah_post.new.cek_valid(post.id_member,post.text)
+        C_api_db_tambah_post.new.cek_valid(post.id_member,post.id_parent_post,post.text)
     end
     it "should detect all hashtag (alfabet,angka,underscore)" do
-        post = M_raw_post.new('',1,'','#lorem haha #ipsum-5 jjk #generasigigih sir','')
+        post = M_raw_post.new('',1,1,'#lorem haha #ipsum-5 jjk #generasigigih sir','')
         output = C_api_db_tambah_post.new.get_hashtag(post.text)
         expect(output).to eq(['lorem','generasigigih'])
     end

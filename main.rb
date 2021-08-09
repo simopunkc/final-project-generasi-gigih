@@ -10,6 +10,8 @@ require "./controllers/c_api_db_tambah_member"
 require "./models/m_api_db_tambah_member"
 require "./controllers/c_api_db_tambah_post"
 require "./models/m_api_db_tambah_post"
+require "./controllers/c_api_db_single_hashtag"
+require "./models/m_api_db_single_hashtag"
 
 post '/register' do
     parameter = JSON.parse(request.body.read)
@@ -32,29 +34,56 @@ post '/register' do
 end
 
 post '/posting' do
-    parameter = JSON.parse(request.body.read)
-    controller = C_api_db_tambah_post.new
-    error_request = controller.cek_param_request(parameter)
+    # parameter = JSON.parse(request.body.read)
+    # controller = C_api_db_tambah_post.new
+    # error_request = controller.cek_param_request(parameter)
+    # if error_request[:hasil] == true
+    #     return JSON.generate(error_request)
+    # end
+    # error_value = controller.cek_valid(parameter["id_member"],parameter["id_parent_post"],parameter["text"])
+    # if error_value[:hasil] == true
+    #     return JSON.generate(error_value)
+    # end
+    # model = M_api_db_tambah_post.new
+    # id_post = model.insert_post(parameter["id_member"],parameter["id_parent_post"],parameter["text"])
+    # ambil_hashtag = controller.get_hashtag(parameter["text"])
+    # if ambil_hashtag.size > 0
+    #     ambil_hashtag.each do |hashtag|
+    #         id_hashtag = model.get_id_hashtag(hashtag)
+    #         if id_hashtag == 0
+    #             id_hashtag = model.insert_hashtag(hashtag)
+    #         end
+    #         if model.cek_duplikat_hashtag(id_hashtag, id_post) == 0
+    #             model.insert_hashtag_post(id_hashtag, id_post)
+    #         end
+    #     end
+    # end
+    puts request.accept
+    # if params["media"] != nil and params["media"] != ""
+    #     puts "fak"
+    # end
+end
+
+get '/hashtag/:id' do
+    controller = C_api_db_single_hashtag.new
+    error_request = controller.cek_param_request(params)
     if error_request[:hasil] == true
         return JSON.generate(error_request)
     end
-    error_value = controller.cek_valid(parameter["id_member"],parameter["text"])
+    error_value = controller.cek_valid(params[:id])
     if error_value[:hasil] == true
         return JSON.generate(error_value)
     end
-    model = M_api_db_tambah_post.new
-    id_post = model.insert_post(parameter["id_member"],parameter["id_parent_post"],parameter["text"])
-    ambil_hashtag = controller.get_hashtag(parameter["text"])
-    if ambil_hashtag.size > 0
-        ambil_hashtag.each do |hashtag|
-            id_hashtag = model.get_id_hashtag(hashtag)
-            if id_hashtag == 0
-                id_hashtag = model.insert_hashtag(hashtag)
-            end
-            if model.cek_duplikat_hashtag(id_hashtag)
-        end
+    model = M_api_db_single_hashtag.new
+    daftar_post = model.get_all_post(params[:id])
+    kumpul_post = Array.new
+    daftar_post.each do | data |
+        post = model.get_detail_post(data)
+        kumpul_post.push(post)
     end
+    kumpul_post.inspect
 end
+
 
 # post '/items/create' do
 #     output = C_db_tambah_item.simpan_item(params)
@@ -83,14 +112,7 @@ end
 #     end
 # end
 
-# get '/items/:id' do
-#     output = C_single_item.cetak_single_item(params)
-#     if output.is_a?(String)
-#         C_output.cetak_output(output)
-#     else
-#         C_error.cetak_error(output)
-#     end
-# end
+
 
 # get '/items/:id/delete' do
 #     output = C_db_delete_item.delete_item(params)

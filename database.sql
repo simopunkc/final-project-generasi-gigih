@@ -23,7 +23,7 @@ DROP TABLE IF EXISTS `tb_post`;
 CREATE TABLE `tb_post` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `id_member` int(10) NOT NULL,
-  `id_parent_post` int(10) DEFAULT NULL,
+  `id_parent_post` int(10) NOT NULL DEFAULT 0,
   `text` text NOT NULL,
   `waktu` datetime NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`),
