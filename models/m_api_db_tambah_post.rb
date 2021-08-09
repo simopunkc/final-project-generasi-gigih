@@ -1,4 +1,3 @@
-require "./models/m_koneksi_db"
 class M_api_db_tambah_post
     def insert_post_media(id_post, id_media)
         client = M_koneksi_db.new.buat_koneksi_db

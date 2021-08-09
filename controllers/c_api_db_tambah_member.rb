@@ -14,7 +14,7 @@ class C_api_db_tambah_member
         return error
     end
 
-    def cek_valid(username,email,bio)
+    def cek_valid(username,email)
         model = M_api_db_tambah_member.new
         error = {:hasil => false, :pesan => ""}
         if username == nil or username == ""

@@ -16,7 +16,7 @@ post '/register' do
     if error_request[:hasil] == true
         return JSON.generate(error_request)
     end
-    error_value = controller.cek_valid(parameter["username"],parameter["email"],parameter["bio"])
+    error_value = controller.cek_valid(parameter["username"],parameter["email"])
     if error_value[:hasil] == true
         return JSON.generate(error_value)
     end
@@ -33,6 +33,10 @@ post '/posting' do
     parameter = JSON.parse(request.body.read)
     controller = C_api_db_tambah_post.new
     error_request = controller.cek_param_request(parameter)
+    if error_request[:hasil] == true
+        return JSON.generate(error_request)
+    end
+    error_value = controller.cek_valid(parameter["username"],parameter["email"],parameter["bio"])
 end
 
 # post '/items/create' do

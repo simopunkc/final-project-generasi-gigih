@@ -1,4 +1,3 @@
-require "./models/m_koneksi_db"
 class M_api_db_single_hashtag
     def get_all_post(id_hashtag)
         client = M_koneksi_db.new.buat_koneksi_db
