@@ -1,5 +1,5 @@
+require "./models/m_raw_member"
 require "./controllers/c_api_db_tambah_member"
-require "./models/m_api_db_tambah_member"
 
 describe C_api_db_tambah_member do
     before(:each) do
@@ -37,7 +37,7 @@ describe C_api_db_tambah_member do
         expect(output).to eq({:hasil => false, :pesan => ""})
         C_api_db_tambah_member.new.cek_param_request(parameter)
     end
-    it "should blank username" do
+    it "should blank value username" do
         member = M_raw_member.new('','','programmer@web.com','')
         allow(@double).to receive(:cek_valid).with(member.username,member.email,member.bio).and_return({:hasil => true, :pesan => "Username wajib diisi"})
         output = @double.cek_valid(member.username,member.email,member.bio)
@@ -45,7 +45,7 @@ describe C_api_db_tambah_member do
         expect(output).to eq({:hasil => true, :pesan => "Username wajib diisi"})
         C_api_db_tambah_member.new.cek_valid(member.username,member.email,member.bio)
     end
-    it "should blank email" do
+    it "should blank value email" do
         member = M_raw_member.new('','programmer','','')
         allow(@double).to receive(:cek_valid).with(member.username,member.email,member.bio).and_return({:hasil => true, :pesan => "Email wajib diisi"})
         output = @double.cek_valid(member.username,member.email,member.bio)

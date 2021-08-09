@@ -1,4 +1,3 @@
-require "./models/m_koneksi_db"
 class M_api_db_tambah_member
     def cek_duplikat_username(username)
         client = M_koneksi_db.new.buat_koneksi_db

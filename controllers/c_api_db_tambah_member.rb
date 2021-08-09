@@ -1,5 +1,3 @@
-require "./models/m_api_db_tambah_member"
-
 class C_api_db_tambah_member
     def cek_param_request(param)
         username = (param.key?('username')) ? 0 : 1

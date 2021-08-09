@@ -5,51 +5,35 @@ set :public_folder, File.dirname(__FILE__)
 set :bind, "0.0.0.0"
 # require "./controllers/c_output"
 # require "./controllers/c_error"
-# require "./controllers/c_api_db_tambah_member"
-
-# class C_api_db_tambah_member
-#     attr_accessor :foo, :bat
-#     def initialize(foo=nil,bat=nil)
-#         @foo = foo
-#         @bat = bat
-#     end
-# end
-
-# heeh = {"hasil" => "good", "pesan" => "haha"}
-# out = JSON.generate(heeh)
-# puts out.inspect
-# ou2 = JSON.parse(out)
-# puts ou2.inspect
-
-# json = '{"foo": 1, "bat": 2}'
-# hasil = JSON.parse(json)
-# item = M_item.new(hasil["foo"],hasil["bat"])
-# puts item.foo
+require "./models/m_koneksi_db"
+require "./controllers/c_api_db_tambah_member"
+require "./models/m_api_db_tambah_member"
 
 post '/register' do
     parameter = JSON.parse(request.body.read)
     controller = C_api_db_tambah_member.new
-    error_request = controller.cek_param_request(param)
+    error_request = controller.cek_param_request(parameter)
     if error_request[:hasil] == true
         return JSON.generate(error_request)
     end
-    model = M_api_db_tambah_member.new
-    error_value = model.cek_valid(param["username"],param["email"],param["bio"])
+    error_value = controller.cek_valid(parameter["username"],parameter["email"],parameter["bio"])
     if error_value[:hasil] == true
         return JSON.generate(error_value)
     end
-    last_id = model.insert_member(param["username"],param["email"],param["bio"])
-    return JSON.generate({:id=>last_id,:pesan=>"success"})
+    model = M_api_db_tambah_member.new
+    last_id = model.insert_member(parameter["username"],parameter["email"],parameter["bio"])
+    if last_id > 0
+        return JSON.generate({:id=>last_id,:pesan=>"success"})
+    else
+        return JSON.generate({:pesan=>"gagal insert ke db"})
+    end
 end
 
-# get '/items/new' do
-#     output = C_tambah_item.cetak_tambah_item
-#     if output.is_a?(String)
-#         C_output.cetak_output(output)
-#     else
-#         C_error.cetak_error(output)
-#     end
-# end
+post '/posting' do
+    parameter = JSON.parse(request.body.read)
+    controller = C_api_db_tambah_post.new
+    error_request = controller.cek_param_request(parameter)
+end
 
 # post '/items/create' do
 #     output = C_db_tambah_item.simpan_item(params)

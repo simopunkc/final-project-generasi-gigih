@@ -63,39 +63,6 @@ describe M_api_db_tambah_post do
     before(:each) do
         @double = instance_double(M_api_db_tambah_post)
     end
-    it "should blank ID member" do
-        post = M_raw_post.new('','','','lorem ipsum','')
-        allow(@double).to receive(:cek_valid).with(post.id_member,post.text).and_return({:hasil => true, :pesan => "ID member wajib diisi"})
-        output = @double.cek_valid(post.id_member,post.text)
-        expect(@double).to have_received(:cek_valid).with(post.id_member,post.text)
-        expect(output).to eq({:hasil => true, :pesan => "ID member wajib diisi"})
-        M_api_db_tambah_post.new.cek_valid(post.id_member,post.text)
-    end
-    it "should blank text" do
-        post = M_raw_post.new('',1,'','','')
-        allow(@double).to receive(:cek_valid).with(post.id_member,post.text).and_return({:hasil => true, :pesan => "Text wajib diisi"})
-        output = @double.cek_valid(post.id_member,post.text)
-        expect(@double).to have_received(:cek_valid).with(post.id_member,post.text)
-        expect(output).to eq({:hasil => true, :pesan => "Text wajib diisi"})
-        M_api_db_tambah_post.new.cek_valid(post.id_member,post.text)
-    end
-    it "should limit 1000" do
-        text = 'A'
-        until text.length > 1000 do
-            text += 'A'
-        end
-        post = M_raw_post.new('',1,'',text,'')
-        allow(@double).to receive(:cek_valid).with(post.id_member,post.text).and_return({:hasil => true, :pesan => "Text maksimal 1000 karakter"})
-        output = @double.cek_valid(post.id_member,post.text)
-        expect(@double).to have_received(:cek_valid).with(post.id_member,post.text)
-        expect(output).to eq({:hasil => true, :pesan => "Text maksimal 1000 karakter"})
-        M_api_db_tambah_post.new.cek_valid(post.id_member,post.text)
-    end
-    it "should detect all hashtag (alfabet,angka,underscore)" do
-        post = M_raw_post.new('',1,'','#lorem haha #ipsum-5 jjk #generasigigih sir','')
-        output = M_api_db_tambah_post.new.get_hashtag(post.text)
-        expect(output).to eq(['lorem','generasigigih'])
-    end
     it "should detect id hashtag" do
         tag = M_raw_hashtag.new(1,'gigih')
         allow(@double).to receive(:get_id_hashtag).with(tag.hashtag).and_return(tag.id)
