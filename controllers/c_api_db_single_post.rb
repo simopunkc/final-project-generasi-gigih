@@ -1,5 +1,3 @@
-require "./controllers/c_modules/c_cek_integer"
-
 class C_api_db_single_post
     include C_cek_integer
 
@@ -13,11 +11,14 @@ class C_api_db_single_post
     end
 
     def cek_valid(id_post)
+        model = M_api_db_single_post.new
         error = {:hasil => false, :pesan => ""}
         if id_post == nil or id_post == ""
             error = {:hasil => true, :pesan => "ID post wajib diisi"}
         elsif cek_integer?(id_post) == false
             error = {:hasil => true, :pesan => "ID post harus integer"}
+        elsif model.cek_id_post(id_post) == 0
+            error = {:hasil => true, :pesan => "ID post tidak ada di database"}
         end
         return error
     end

@@ -13,11 +13,14 @@ class C_api_db_single_hashtag
     end
 
     def cek_valid(id_hashtag)
+        model = M_api_db_single_hashtag.new
         error = {:hasil => false, :pesan => ""}
         if id_hashtag == nil or id_hashtag == ""
             error = {:hasil => true, :pesan => "ID hashtag wajib diisi"}
         elsif cek_integer?(id_hashtag) == false
             error = {:hasil => true, :pesan => "ID hashtag harus integer"}
+        elsif model.cek_id_hashtag(id_hashtag) == 0
+            error = {:hasil => true, :pesan => "ID hashtag tidak ada di database"}
         end
         return error
     end

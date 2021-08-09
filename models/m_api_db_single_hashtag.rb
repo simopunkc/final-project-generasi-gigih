@@ -12,4 +12,14 @@ class M_api_db_single_hashtag
         end
         return post_id
     end
+
+    def cek_id_hashtag(id_hashtag)
+        client = M_koneksi_db.new.buat_koneksi_db
+        rawData = client.query("SELECT COUNT(id) FROM tb_hashtag WHERE id=#{id_hashtag} LIMIT 1")
+        jumlah = 0
+        rawData.each do | data |
+            jumlah = data["COUNT(id)"]
+        end
+        return jumlah
+    end
 end

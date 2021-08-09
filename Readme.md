@@ -1,5 +1,5 @@
 # Problem description
-Developing a social media application which can be used to share information with other people. This application will only be used by people that work in a certain company so they cannot use existing public social media.
+Developing a social media application which can be used to share information with other people. This application will only be used by people that work in a certain company so they cannot use existing public social media. The application will be an API-only application.
 
 # setup
 apt-get update -y && apt-get upgrade -y && apt-get dist-upgrade -y  
@@ -45,6 +45,8 @@ git clone https://github.com/simopunkc/final-project-generasi-gigih.git
 cd final-project-generasi-gigih  
 rspec --init  
 
+# Test
+rspec spec/  
 
 # Usages
 rerun main.rb

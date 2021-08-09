@@ -1,8 +1,3 @@
-require 'fileutils'
-require 'date'
-require "./models/m_koneksi_db"
-require "./controllers/c_modules/c_cek_integer"
-
 class C_api_db_tambah_post
     include C_cek_integer
 

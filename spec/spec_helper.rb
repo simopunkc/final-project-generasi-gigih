@@ -1,5 +1,8 @@
 require 'mysql2'
 require 'simplecov'
+require 'fileutils'
+require 'date'
+require "./controllers/c_modules/c_cek_integer"
 require "./models/m_koneksi_db"
 require "./models/m_raw_post"
 require "./models/m_raw_hashtag"

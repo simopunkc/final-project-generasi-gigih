@@ -1,8 +1,11 @@
 require 'json'
 require 'sinatra'
 require 'mysql2'
+require 'fileutils'
+require 'date'
 set :public_folder, File.dirname(__FILE__)
 set :bind, "0.0.0.0"
+require "./controllers/c_modules/c_cek_integer"
 require "./models/m_koneksi_db"
 require "./models/m_raw_post"
 require "./models/m_raw_hashtag"
@@ -113,14 +116,15 @@ get '/post/:id' do
         return JSON.generate(error_value)
     end
     model = M_api_db_single_post.new
-    data_post = model.get_detail_post(params[:id])
+    single_post = Array.new
+    data_post = Array.new
     data_comment = Array.new
+    data_post = model.get_detail_post(params[:id])
     daftar_comment = model.get_all_post_comment(params[:id])
     daftar_comment.each do |comment|
         komen = model.get_detail_post(comment)
         data_comment.push(komen)
     end
-    single_post = Array.new
     single_post.push(data_post)
     single_post.push(data_comment)
     return controller.print_output(single_post)

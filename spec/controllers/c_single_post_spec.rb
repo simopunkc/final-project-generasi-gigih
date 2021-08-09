@@ -1,6 +1,10 @@
 require "./controllers/c_api_db_single_post"
 
 describe C_api_db_single_post do
+    it "should invalid id post" do
+        output = C_api_db_single_post.new.cek_valid(0)
+        expect(output).to eq({:hasil=>true, :pesan=>"ID post tidak ada di database"})
+    end
     before(:each) do
         @double = instance_double(C_api_db_single_post)
     end
