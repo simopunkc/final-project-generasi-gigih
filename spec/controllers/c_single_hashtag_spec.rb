@@ -2,8 +2,11 @@ require "./controllers/c_api_db_single_hashtag"
 
 describe C_api_db_single_hashtag do
     it "should invalid id hashtag" do
-        output = C_api_db_single_hashtag.new.cek_valid(0)
+        allow(@double).to receive(:cek_valid).with(0).and_return({:hasil=>true, :pesan=>"ID hashtag tidak ada di database"})
+        output = @double.cek_valid(0)
+        expect(@double).to have_received(:cek_valid).with(0)
         expect(output).to eq({:hasil=>true, :pesan=>"ID hashtag tidak ada di database"})
+        C_api_db_single_hashtag.new.cek_valid(0)
     end
     it "should render view single hashtag" do
         kumpul_post = []
