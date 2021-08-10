@@ -59,6 +59,16 @@
   - shell: mysql -u root < /app/database_reset.sql
   - shell: mysql -u root db_generasigigih < /app/database.sql
 
+  - name: stop sinatra
+    systemd:
+      name: sinatra
+      state: stopped
+      ignore_errors: true
+
+  - name: delete sinatra
+    shell: rm -rf dest: /etc/systemd/system/sinatra.service
+    ignore_errors: true
+
   - name: install sinatra systemd
     copy:
       src: /app/sinatra.service
