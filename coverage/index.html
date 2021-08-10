@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2021-08-10T07:58:58+07:00">2021-08-10T07:58:58+07:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2021-08-10T11:15:43+07:00">2021-08-10T11:15:43+07:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -30,7 +30,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         3.01
+         2.97
        </span>
     </span> hits/line
     )
@@ -43,8 +43,8 @@
   </div>
 
   <div class="t-line-summary">
-    <b>619</b> relevant lines,
-    <span class="green"><b>619</b> lines covered</span> and
+    <b>633</b> relevant lines,
+    <span class="green"><b>633</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed. </span>
     (<span class="green">
   100.0%
@@ -139,11 +139,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#9f7453ae47ff32510d0f9178e210f9154799ce0e" class="src_link" title="models/m_api_db_single_post.rb">models/m_api_db_single_post.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">25</td>
-            <td class="cell--number">17</td>
-            <td class="cell--number">17</td>
+            <td class="cell--number">35</td>
+            <td class="cell--number">24</td>
+            <td class="cell--number">24</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">1.47</td>
+            <td class="cell--number">1.38</td>
             
           </tr>
         
@@ -271,11 +271,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#5c2ea52bdb65bc9587a656d0145241a896af9262" class="src_link" title="spec/models/m_single_post_spec.rb">spec/models/m_single_post_spec.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">23</td>
-            <td class="cell--number">18</td>
-            <td class="cell--number">18</td>
+            <td class="cell--number">31</td>
+            <td class="cell--number">25</td>
+            <td class="cell--number">25</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">1.06</td>
+            <td class="cell--number">1.08</td>
             
           </tr>
         
@@ -1676,7 +1676,7 @@
 
             
 
-            <code class="ruby">        return namafile.gsub(/[^A-Za-z0-9\-\_]/,&#39;&#39;)</code>
+            <code class="ruby">        return namafile.gsub(/(?:[^A-Za-z0-9\-\_\.]+)/,&#39;&#39;)</code>
           </li>
         </div>
       
@@ -2531,8 +2531,8 @@
     
 
     <div class="t-line-summary">
-      <b>17</b> relevant lines.
-      <span class="green"><b>17</b> lines covered</span> and
+      <b>24</b> relevant lines.
+      <span class="green"><b>24</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -2594,7 +2594,7 @@
 
             
 
-            <code class="ruby">    </code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -2605,7 +2605,7 @@
 
             
 
-            <code class="ruby">    def get_all_post_comment(id_post)</code>
+            <code class="ruby">    def get_media_post(id_post)</code>
           </li>
         </div>
       
@@ -2627,7 +2627,7 @@
 
             
 
-            <code class="ruby">        rawData = client.query(&quot;SELECT id FROM tb_post WHERE id_parent_post=#{id_post} ORDER BY id DESC&quot;)</code>
+            <code class="ruby">        rawData = client.query(&quot;SELECT id_media FROM tb_post_media WHERE id_post=#{id_post} LIMIT 1&quot;)</code>
           </li>
         </div>
       
@@ -2638,7 +2638,7 @@
 
             
 
-            <code class="ruby">        post_id = Array.new</code>
+            <code class="ruby">        id_media = Array.new</code>
           </li>
         </div>
       
@@ -2654,13 +2654,13 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="3" data-linenumber="11">
-            <span class="hits">3</span>
+          <li class="covered" data-hits="1" data-linenumber="11">
+            <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">            post_id.push(data[&quot;id&quot;])</code>
+            <code class="ruby">            id_media.push(data[&quot;id_media&quot;])</code>
           </li>
         </div>
       
@@ -2682,7 +2682,7 @@
 
             
 
-            <code class="ruby">        return post_id</code>
+            <code class="ruby">        return id_media</code>
           </li>
         </div>
       
@@ -2704,7 +2704,7 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">    </code>
           </li>
         </div>
       
@@ -2715,13 +2715,13 @@
 
             
 
-            <code class="ruby">    def cek_id_post(id_post)</code>
+            <code class="ruby">    def get_all_post_comment(id_post)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="17">
-            <span class="hits">2</span>
+          <li class="covered" data-hits="1" data-linenumber="17">
+            <span class="hits">1</span>
             
 
             
@@ -2731,30 +2731,30 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="18">
-            <span class="hits">2</span>
+          <li class="covered" data-hits="1" data-linenumber="18">
+            <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">        rawData = client.query(&quot;SELECT COUNT(id) FROM tb_post WHERE id=#{id_post} LIMIT 1&quot;)</code>
+            <code class="ruby">        rawData = client.query(&quot;SELECT id FROM tb_post WHERE id_parent_post=#{id_post} ORDER BY id DESC&quot;)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="19">
-            <span class="hits">2</span>
+          <li class="covered" data-hits="1" data-linenumber="19">
+            <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">        jumlah = 0</code>
+            <code class="ruby">        post_id = Array.new</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="20">
-            <span class="hits">2</span>
+          <li class="covered" data-hits="1" data-linenumber="20">
+            <span class="hits">1</span>
             
 
             
@@ -2764,13 +2764,13 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="21">
-            <span class="hits">2</span>
+          <li class="covered" data-hits="4" data-linenumber="21">
+            <span class="hits">4</span>
             
 
             
 
-            <code class="ruby">            jumlah = data[&quot;COUNT(id)&quot;]</code>
+            <code class="ruby">            post_id.push(data[&quot;id&quot;])</code>
           </li>
         </div>
       
@@ -2786,13 +2786,13 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="23">
-            <span class="hits">2</span>
+          <li class="covered" data-hits="1" data-linenumber="23">
+            <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">        return jumlah</code>
+            <code class="ruby">        return post_id</code>
           </li>
         </div>
       
@@ -2809,6 +2809,116 @@
       
         <div>
           <li class="never" data-hits="" data-linenumber="25">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="26">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    def cek_id_post(id_post)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="27">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">        client = M_koneksi_db.new.buat_koneksi_db</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="28">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">        rawData = client.query(&quot;SELECT COUNT(id) FROM tb_post WHERE id=#{id_post} LIMIT 1&quot;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="29">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">        jumlah = 0</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="30">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">        rawData.each do | data |</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="31">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">            jumlah = data[&quot;COUNT(id)&quot;]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="32">
+            
+            
+
+            
+
+            <code class="ruby">        end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="33">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">        return jumlah</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="34">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="35">
             
             
 
@@ -3261,7 +3371,7 @@
 
             
 
-            <code class="ruby">    def insert_media(lokasi,ext)</code>
+            <code class="ruby">    def insert_media(lokasi,mime)</code>
           </li>
         </div>
       
@@ -3283,7 +3393,7 @@
 
             
 
-            <code class="ruby">        client.query(&quot;INSERT INTO tb_media (lokasi,ext) values (&#39;#{lokasi}&#39;,&#39;#{ext}&#39;)&quot;)</code>
+            <code class="ruby">        client.query(&quot;INSERT INTO tb_media (lokasi,mime) values (&#39;#{lokasi}&#39;,&#39;#{mime}&#39;)&quot;)</code>
           </li>
         </div>
       
@@ -8448,7 +8558,7 @@
 
             
 
-            <code class="ruby">        query = &quot;INSERT INTO tb_media (lokasi,ext) values (&#39;#{media.lokasi}&#39;,&#39;#{media.ext}&#39;)&quot;</code>
+            <code class="ruby">        query = &quot;INSERT INTO tb_media (lokasi,mime) values (&#39;#{media.lokasi}&#39;,&#39;#{media.mime}&#39;)&quot;</code>
           </li>
         </div>
       
@@ -8503,7 +8613,7 @@
 
             
 
-            <code class="ruby">        M_api_db_tambah_post.new.insert_media(media.lokasi,media.ext)</code>
+            <code class="ruby">        M_api_db_tambah_post.new.insert_media(media.lokasi,media.mime)</code>
           </li>
         </div>
       
@@ -9250,8 +9360,8 @@
     
 
     <div class="t-line-summary">
-      <b>18</b> relevant lines.
-      <span class="green"><b>18</b> lines covered</span> and
+      <b>25</b> relevant lines.
+      <span class="green"><b>25</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -9307,8 +9417,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="5">
-            <span class="hits">2</span>
+          <li class="covered" data-hits="3" data-linenumber="5">
+            <span class="hits">3</span>
             
 
             
@@ -9335,7 +9445,7 @@
 
             
 
-            <code class="ruby">    it &quot;#get_detail_post&quot; do</code>
+            <code class="ruby">    it &quot;#get_media_post&quot; do</code>
           </li>
         </div>
       
@@ -9357,7 +9467,7 @@
 
             
 
-            <code class="ruby">        allow(@double).to receive(:get_detail_post).with(post.id).and_return(1)</code>
+            <code class="ruby">        allow(@double).to receive(:get_media_post).with(post.id).and_return(1)</code>
           </li>
         </div>
       
@@ -9368,7 +9478,7 @@
 
             
 
-            <code class="ruby">        output = @double.get_detail_post(post.id)</code>
+            <code class="ruby">        output = @double.get_media_post(post.id)</code>
           </li>
         </div>
       
@@ -9379,7 +9489,7 @@
 
             
 
-            <code class="ruby">        expect(@double).to have_received(:get_detail_post).with(post.id)</code>
+            <code class="ruby">        expect(@double).to have_received(:get_media_post).with(post.id)</code>
           </li>
         </div>
       
@@ -9401,7 +9511,7 @@
 
             
 
-            <code class="ruby">        M_api_db_single_post.new.get_detail_post(post.id)</code>
+            <code class="ruby">        M_api_db_single_post.new.get_media_post(post.id)</code>
           </li>
         </div>
       
@@ -9423,7 +9533,7 @@
 
             
 
-            <code class="ruby">    it &quot;#get_all_post_comment&quot; do</code>
+            <code class="ruby">    it &quot;#get_detail_post&quot; do</code>
           </li>
         </div>
       
@@ -9434,7 +9544,7 @@
 
             
 
-            <code class="ruby">        post = M_raw_post.new(&#39;&#39;,&#39;&#39;,1,&#39;&#39;,&#39;&#39;)</code>
+            <code class="ruby">        post = M_raw_post.new(1,&#39;&#39;,&#39;&#39;,&#39;&#39;,&#39;&#39;)</code>
           </li>
         </div>
       
@@ -9445,7 +9555,7 @@
 
             
 
-            <code class="ruby">        allow(@double).to receive(:get_all_post_comment).with(post.id_parent_post).and_return(1)</code>
+            <code class="ruby">        allow(@double).to receive(:get_detail_post).with(post.id).and_return(1)</code>
           </li>
         </div>
       
@@ -9456,7 +9566,7 @@
 
             
 
-            <code class="ruby">        output = @double.get_all_post_comment(post.id_parent_post)</code>
+            <code class="ruby">        output = @double.get_detail_post(post.id)</code>
           </li>
         </div>
       
@@ -9467,7 +9577,7 @@
 
             
 
-            <code class="ruby">        expect(@double).to have_received(:get_all_post_comment).with(post.id_parent_post)</code>
+            <code class="ruby">        expect(@double).to have_received(:get_detail_post).with(post.id)</code>
           </li>
         </div>
       
@@ -9489,7 +9599,7 @@
 
             
 
-            <code class="ruby">        M_api_db_single_post.new.get_all_post_comment(post.id_parent_post)</code>
+            <code class="ruby">        M_api_db_single_post.new.get_detail_post(post.id)</code>
           </li>
         </div>
       
@@ -9505,7 +9615,95 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="23">
+          <li class="covered" data-hits="1" data-linenumber="23">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    it &quot;#get_all_post_comment&quot; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="24">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        post = M_raw_post.new(&#39;&#39;,&#39;&#39;,1,&#39;&#39;,&#39;&#39;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="25">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        allow(@double).to receive(:get_all_post_comment).with(post.id_parent_post).and_return(1)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="26">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        output = @double.get_all_post_comment(post.id_parent_post)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="27">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        expect(@double).to have_received(:get_all_post_comment).with(post.id_parent_post)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="28">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        expect(output).to eq(1)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="29">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        M_api_db_single_post.new.get_all_post_comment(post.id_parent_post)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="30">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="31">
             
             
 

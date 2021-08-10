@@ -4,6 +4,14 @@ describe M_api_db_single_post do
     before(:each) do
         @double = instance_double(M_api_db_single_post)
     end
+    it "#get_media_post" do
+        post = M_raw_post.new(1,'','','','')
+        allow(@double).to receive(:get_media_post).with(post.id).and_return(1)
+        output = @double.get_media_post(post.id)
+        expect(@double).to have_received(:get_media_post).with(post.id)
+        expect(output).to eq(1)
+        M_api_db_single_post.new.get_media_post(post.id)
+    end
     it "#get_detail_post" do
         post = M_raw_post.new(1,'','','','')
         allow(@double).to receive(:get_detail_post).with(post.id).and_return(1)
