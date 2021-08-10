@@ -6,44 +6,44 @@
     ansible_python_interpreter: '/usr/bin/python2'
 
   tasks:
-  - shell: apt-get update -y && apt-get upgrade -y && apt-get dist-upgrade -y
-  - shell: apt-get install -y dialog mercurial gcc-multilib git cmake g++
-  - shell: apt-get install -y curl libunwind-dev nano
-  - shell: apt-get install -y build-essential cmake git gnupg golang libpcre3-dev zlib1g-dev libcurl4-openssl-dev libssl-dev
-  - shell: apt-get install -y pkg-config build-essential autoconf bison re2c libxml2-dev libsqlite3-dev
-  - shell: apt-get install -y gcc-8-base apt-utils
-  - shell: apt-get install locales bash-completion nano git zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev software-properties-common libffi-dev dirmngr gnupg2 apt-transport-https ca-certificates net-tools
-  - shell: curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
-  - shell: apt install -y nodejs
-  - shell: echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-  - shell: apt update && apt install yarn
-  - shell: git clone https://github.com/rbenv/rbenv.git ~/.rbenv
-  - shell: echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
-  - shell: echo 'eval "$(rbenv init -)"' >> ~/.bashrc
-  - shell: exec $SHELL
-  - shell: git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
-  - shell: echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
-  - shell: exec $SHELL
-  - shell: rbenv install 3.0.2
-  - shell: rbenv global 3.0.2
-  - shell: gem install bundler
-  - shell: apt install -y mariadb-server mariadb-client default-libmysqlclient-dev
-  - shell: gem install mysql2
-  - shell: systemctl disable mysql
-  - shell: systemctl enable mariadb.service
-  - shell: gem install rerun
-  - shell: gem install rails
-  - shell: gem install rspec
-  - shell: gem install simplecov
-  - shell: gem install sinatra
-  - shell: gem install thin
-  - shell: gem install puma
-  - shell: gem install reel
-  - shell: gem install http
-  - shell: gem install webrick
-  - shell: gem install mimemagic
-  - shell: gem install travis
-  - shell: apt install ansible
+  # - shell: apt-get update -y && apt-get upgrade -y && apt-get dist-upgrade -y
+  # - shell: apt-get install -y dialog mercurial gcc-multilib git cmake g++
+  # - shell: apt-get install -y curl libunwind-dev nano
+  # - shell: apt-get install -y build-essential cmake git gnupg golang libpcre3-dev zlib1g-dev libcurl4-openssl-dev libssl-dev
+  # - shell: apt-get install -y pkg-config build-essential autoconf bison re2c libxml2-dev libsqlite3-dev
+  # - shell: apt-get install -y gcc-8-base apt-utils
+  # - shell: apt-get install locales bash-completion nano git zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev software-properties-common libffi-dev dirmngr gnupg2 apt-transport-https ca-certificates net-tools
+  # - shell: curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+  # - shell: apt install -y nodejs
+  # - shell: echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+  # - shell: apt update && apt install yarn
+  # - shell: git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+  # - shell: echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+  # - shell: echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+  # - shell: exec $SHELL
+  # - shell: git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+  # - shell: echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
+  # - shell: exec $SHELL
+  # - shell: rbenv install 3.0.2
+  # - shell: rbenv global 3.0.2
+  # - shell: gem install bundler
+  # - shell: apt install -y mariadb-server mariadb-client default-libmysqlclient-dev
+  # - shell: gem install mysql2
+  # - shell: systemctl disable mysql
+  # - shell: systemctl enable mariadb.service
+  # - shell: gem install rerun
+  # - shell: gem install rails
+  # - shell: gem install rspec
+  # - shell: gem install simplecov
+  # - shell: gem install sinatra
+  # - shell: gem install thin
+  # - shell: gem install puma
+  # - shell: gem install reel
+  # - shell: gem install http
+  # - shell: gem install webrick
+  # - shell: gem install mimemagic
+  # - shell: gem install travis
+  # - shell: apt install ansible
 
   - name: Start Mariadb
     service:

@@ -1,7 +1,7 @@
-# Problem description
+## Problem description
 Developing a social media application which can be used to share information with other people. This application will only be used by people that work in a certain company so they cannot use existing public social media. The application will be an API-only application.
 
-# setup
+## setup
 apt-get update -y && apt-get upgrade -y && apt-get dist-upgrade -y  
 apt-get install -y dialog mercurial gcc-multilib git cmake g++  
 apt-get install -y curl libunwind-dev nano  
@@ -44,20 +44,14 @@ gem install mimemagic
 gem install travis  
 apt install ansible  
 
-# Installations
-cd  
-git clone https://github.com/simopunkc/final-project-generasi-gigih.git  
-cd final-project-generasi-gigih  
-
-# Notes: reset the Database before running test
+## Notes: reset the Database before running test
 mysql -u root < database_reset.sql  
 mysql -u root db_generasigigih < database.sql  
 
-# Testing
-# Coverage should be 100%
-# Postman test should be Passed 100%
+## Testing
+#### Coverage should be 100% & Postman test should be Passed 100%
 rspec --init  
 rspec spec/  
 
-# Usages
+## localhost usage
 rerun main.rb
