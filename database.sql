@@ -72,7 +72,7 @@ CREATE TABLE `tb_media` (
   UNIQUE KEY `lokasi` (`lokasi`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 LOCK TABLES `tb_media` WRITE;
-INSERT INTO `tb_media` (id,lokasi,mime) VALUES (1,'upload/2021-August-09/post1.jpg','image/jpg');
+INSERT INTO `tb_media` (id,lokasi,mime) VALUES (1,'upload/member1/2021-August-10/ae9ac183reflektif.txt','');
 UNLOCK TABLES;
 
 

@@ -9,6 +9,8 @@ apt-get install -y build-essential cmake git gnupg golang libpcre3-dev zlib1g-de
 apt-get install -y pkg-config build-essential autoconf bison re2c libxml2-dev libsqlite3-dev  
 apt-get install -y gcc-8-base apt-utils  
 apt-get install locales bash-completion nano git zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev software-properties-common libffi-dev dirmngr gnupg2 apt-transport-https ca-certificates net-tools  
+sudo mkdir /root/.ssh  
+sudo cp ~/.ssh/authorized_keys /root/.ssh/authorized_keys  
 curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -  
 apt install -y nodejs  
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list  

@@ -19,51 +19,18 @@
   - shell: git clone https://github.com/simopunkc/final-project-generasi-gigih.git /app
   - shell: mysql -u root < /app/database.sql
 
-  # - name: install sinatra systemd
-  #   copy:
-  #     src: /app/sinatra.service
-  #     dest: /etc/systemd/system/sinatra.service
-  #     remote_src: yes
-  # - shell: systemctl daemon-reload
-  # - shell: systemctl start sinatra.service
+  - name: install sinatra systemd
+    copy:
+      src: /app/sinatra.service
+      dest: /etc/systemd/system/sinatra.service
+      remote_src: yes
 
-  # - name: reload systemd
-  #   systemd:
-  #     daemon_reload: yes
+  - name: reload systemd
+    systemd:
+      daemon_reload: yes
 
-  # - name: start sinatra
-  #   systemd:
-  #     name: sinatra
-  #     state: started
-
-  #   command: systemctl start sinatra.service
-
-  # - name: Update apt cache and install Nginx
-  #   apt:
-  #     name: nginx
-  #     state: latest
-  #     update_cache: no
-
-  # - name: Start Nginx
-  #   service:
-  #     name: nginx
-  #     state: started
-
-  # - name: Stop Nginx
-  #   service:
-  #     name: nginx
-  #     state: stopped
-
-  # - name: Ping Test
-  #   hosts: all
-  #   tasks:
-  #   - ping:
-
-  # - name: Download node setup script
-  #   get_url:
-  #     url: https://deb.nodesource.com/setup_12.x
-  #     dest: /tmp/node_setup.sh
-  #     mode: '0755'
-  #   - name: Execute node setup script
-  #     become: yes
-  #     command: bash /tmp/node_setup.sh
+  - name: start sinatra
+    systemd:
+      name: sinatra
+      state: started
+      
