@@ -1,0 +1,1971 @@
+{
+	"info": {
+		"_postman_id": "aff1a98c-0ebb-4389-9c56-53b8df339b64",
+		"name": "Generasi Gigih API GBE01037",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "register missing param username",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('status code should be 400', () => {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test('response header Content-Type should be application/json', () => {",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.equals('application/json; charset=utf-8');",
+							"});",
+							"",
+							"pm.test('response body should be an object', () => {",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson).to.be.an('object');",
+							"});",
+							"",
+							"pm.test('response body should error', () => {",
+							"    const responseJson = pm.response.json();",
+							"    ",
+							"    pm.expect(responseJson).to.haveOwnProperty('hasil');",
+							"    pm.expect(responseJson).to.haveOwnProperty('pesan');",
+							"    pm.expect(responseJson.hasil).to.equals(true);",
+							"    pm.expect(responseJson.pesan).to.equals('Parameter username tidak ditemukan');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"jojo@web.com\",\n    \"bio\": \"jojo was here\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:4567/register",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4567",
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register missing param email",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('status code should be 400', () => {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test('response header Content-Type should be application/json', () => {",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.equals('application/json; charset=utf-8');",
+							"});",
+							"",
+							"pm.test('response body should be an object', () => {",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson).to.be.an('object');",
+							"});",
+							"",
+							"pm.test('response body should error', () => {",
+							"    const responseJson = pm.response.json();",
+							"    ",
+							"    pm.expect(responseJson).to.haveOwnProperty('hasil');",
+							"    pm.expect(responseJson).to.haveOwnProperty('pesan');",
+							"    pm.expect(responseJson.hasil).to.equals(true);",
+							"    pm.expect(responseJson.pesan).to.equals('Parameter email tidak ditemukan');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"jojo\",\n    \"bio\": \"jojo was here\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:4567/register",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4567",
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register missing param bio",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('status code should be 400', () => {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test('response header Content-Type should be application/json', () => {",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.equals('application/json; charset=utf-8');",
+							"});",
+							"",
+							"pm.test('response body should be an object', () => {",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson).to.be.an('object');",
+							"});",
+							"",
+							"pm.test('response body should error', () => {",
+							"    const responseJson = pm.response.json();",
+							"    ",
+							"    pm.expect(responseJson).to.haveOwnProperty('hasil');",
+							"    pm.expect(responseJson).to.haveOwnProperty('pesan');",
+							"    pm.expect(responseJson.hasil).to.equals(true);",
+							"    pm.expect(responseJson.pesan).to.equals('Parameter bio tidak ditemukan');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"jojo\",\n    \"email\": \"jojo@web.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:4567/register",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4567",
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register empty param username",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('status code should be 400', () => {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test('response header Content-Type should be application/json', () => {",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.equals('application/json; charset=utf-8');",
+							"});",
+							"",
+							"pm.test('response body should be an object', () => {",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson).to.be.an('object');",
+							"});",
+							"",
+							"pm.test('response body should error', () => {",
+							"    const responseJson = pm.response.json();",
+							"    ",
+							"    pm.expect(responseJson).to.haveOwnProperty('hasil');",
+							"    pm.expect(responseJson).to.haveOwnProperty('pesan');",
+							"    pm.expect(responseJson.hasil).to.equals(true);",
+							"    pm.expect(responseJson.pesan).to.equals('Username wajib diisi');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"\",\n    \"email\": \"jojo@web.com\",\n    \"bio\": \"aku di sini\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:4567/register",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4567",
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register duplikat param username",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('status code should be 400', () => {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test('response header Content-Type should be application/json', () => {",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.equals('application/json; charset=utf-8');",
+							"});",
+							"",
+							"pm.test('response body should be an object', () => {",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson).to.be.an('object');",
+							"});",
+							"",
+							"pm.test('response body should error', () => {",
+							"    const responseJson = pm.response.json();",
+							"    ",
+							"    pm.expect(responseJson).to.haveOwnProperty('hasil');",
+							"    pm.expect(responseJson).to.haveOwnProperty('pesan');",
+							"    pm.expect(responseJson.hasil).to.equals(true);",
+							"    pm.expect(responseJson.pesan).to.equals('Username sudah digunakan');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"admin\",\n    \"email\": \"jojo@web.com\",\n    \"bio\": \"aku di sini\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:4567/register",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4567",
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register empty param email",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('status code should be 400', () => {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test('response header Content-Type should be application/json', () => {",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.equals('application/json; charset=utf-8');",
+							"});",
+							"",
+							"pm.test('response body should be an object', () => {",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson).to.be.an('object');",
+							"});",
+							"",
+							"pm.test('response body should error', () => {",
+							"    const responseJson = pm.response.json();",
+							"    ",
+							"    pm.expect(responseJson).to.haveOwnProperty('hasil');",
+							"    pm.expect(responseJson).to.haveOwnProperty('pesan');",
+							"    pm.expect(responseJson.hasil).to.equals(true);",
+							"    pm.expect(responseJson.pesan).to.equals('Email wajib diisi');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"jojo\",\n    \"email\": \"\",\n    \"bio\": \"aku di sini\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:4567/register",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4567",
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register duplikat param email",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('status code should be 400', () => {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test('response header Content-Type should be application/json', () => {",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.equals('application/json; charset=utf-8');",
+							"});",
+							"",
+							"pm.test('response body should be an object', () => {",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson).to.be.an('object');",
+							"});",
+							"",
+							"pm.test('response body should error', () => {",
+							"    const responseJson = pm.response.json();",
+							"    ",
+							"    pm.expect(responseJson).to.haveOwnProperty('hasil');",
+							"    pm.expect(responseJson).to.haveOwnProperty('pesan');",
+							"    pm.expect(responseJson.hasil).to.equals(true);",
+							"    pm.expect(responseJson.pesan).to.equals('Email sudah digunakan');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"jojo90\",\n    \"email\": \"admin@web.com\",\n    \"bio\": \"aku di sini\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:4567/register",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4567",
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register valid",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('status code should be 201', () => {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test('response header Content-Type should be application/json', () => {",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.equals('application/json; charset=utf-8');",
+							"});",
+							"",
+							"pm.test('response body should be an object', () => {",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson).to.be.an('object');",
+							"});",
+							"",
+							"pm.test('response body should have correct property and value', () => {",
+							"    const responseJson = pm.response.json();",
+							"    ",
+							"    pm.expect(responseJson).to.haveOwnProperty('id');",
+							"    pm.expect(responseJson).to.haveOwnProperty('pesan');",
+							"",
+							"    pm.expect(responseJson.pesan).to.equals('success');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"jojo0\",\n    \"email\": \"jojo0@web.com\",\n    \"bio\": \"jojo0 was here\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:4567/register",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4567",
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "posting missing param id_member",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('status code should be 400', () => {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test('response header Content-Type should be application/json', () => {",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.equals('application/json; charset=utf-8');",
+							"});",
+							"",
+							"pm.test('response body should be an object', () => {",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson).to.be.an('object');",
+							"});",
+							"",
+							"pm.test('response body should error', () => {",
+							"    const responseJson = pm.response.json();",
+							"    ",
+							"    pm.expect(responseJson).to.haveOwnProperty('hasil');",
+							"    pm.expect(responseJson).to.haveOwnProperty('pesan');",
+							"    pm.expect(responseJson.hasil).to.equals(true);",
+							"    pm.expect(responseJson.pesan).to.equals('Parameter id_member tidak ditemukan');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id_parent_post",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "text",
+							"value": "jojo was here #good bro",
+							"type": "text"
+						},
+						{
+							"key": "media",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "127.0.0.1:4567/posting",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4567",
+					"path": [
+						"posting"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "posting missing param id_parent_post",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('status code should be 400', () => {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test('response header Content-Type should be application/json', () => {",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.equals('application/json; charset=utf-8');",
+							"});",
+							"",
+							"pm.test('response body should be an object', () => {",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson).to.be.an('object');",
+							"});",
+							"",
+							"pm.test('response body should error', () => {",
+							"    const responseJson = pm.response.json();",
+							"    ",
+							"    pm.expect(responseJson).to.haveOwnProperty('hasil');",
+							"    pm.expect(responseJson).to.haveOwnProperty('pesan');",
+							"    pm.expect(responseJson.hasil).to.equals(true);",
+							"    pm.expect(responseJson.pesan).to.equals('Parameter id_parent_post tidak ditemukan');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id_member",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "text",
+							"value": "jojo was here #good bro",
+							"type": "text"
+						},
+						{
+							"key": "media",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "127.0.0.1:4567/posting",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4567",
+					"path": [
+						"posting"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "posting missing param text",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('status code should be 400', () => {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test('response header Content-Type should be application/json', () => {",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.equals('application/json; charset=utf-8');",
+							"});",
+							"",
+							"pm.test('response body should be an object', () => {",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson).to.be.an('object');",
+							"});",
+							"",
+							"pm.test('response body should error', () => {",
+							"    const responseJson = pm.response.json();",
+							"    ",
+							"    pm.expect(responseJson).to.haveOwnProperty('hasil');",
+							"    pm.expect(responseJson).to.haveOwnProperty('pesan');",
+							"    pm.expect(responseJson.hasil).to.equals(true);",
+							"    pm.expect(responseJson.pesan).to.equals('Parameter text tidak ditemukan');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id_member",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "id_parent_post",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "media",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "127.0.0.1:4567/posting",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4567",
+					"path": [
+						"posting"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "posting missing param media",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('status code should be 400', () => {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test('response header Content-Type should be application/json', () => {",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.equals('application/json; charset=utf-8');",
+							"});",
+							"",
+							"pm.test('response body should be an object', () => {",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson).to.be.an('object');",
+							"});",
+							"",
+							"pm.test('response body should error', () => {",
+							"    const responseJson = pm.response.json();",
+							"    ",
+							"    pm.expect(responseJson).to.haveOwnProperty('hasil');",
+							"    pm.expect(responseJson).to.haveOwnProperty('pesan');",
+							"    pm.expect(responseJson.hasil).to.equals(true);",
+							"    pm.expect(responseJson.pesan).to.equals('Parameter media tidak ditemukan');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id_member",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "id_parent_post",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "text",
+							"value": "jojo was here #good bro",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "127.0.0.1:4567/posting",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4567",
+					"path": [
+						"posting"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "posting param id_member empty",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('status code should be 400', () => {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test('response header Content-Type should be application/json', () => {",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.equals('application/json; charset=utf-8');",
+							"});",
+							"",
+							"pm.test('response body should be an object', () => {",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson).to.be.an('object');",
+							"});",
+							"",
+							"pm.test('response body should error', () => {",
+							"    const responseJson = pm.response.json();",
+							"    ",
+							"    pm.expect(responseJson).to.haveOwnProperty('hasil');",
+							"    pm.expect(responseJson).to.haveOwnProperty('pesan');",
+							"    pm.expect(responseJson.hasil).to.equals(true);",
+							"    pm.expect(responseJson.pesan).to.equals('ID member wajib diisi');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id_member",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "id_parent_post",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "text",
+							"value": "jojo was here #good bro",
+							"type": "text"
+						},
+						{
+							"key": "media",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "127.0.0.1:4567/posting",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4567",
+					"path": [
+						"posting"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "posting param id_member integer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('status code should be 400', () => {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test('response header Content-Type should be application/json', () => {",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.equals('application/json; charset=utf-8');",
+							"});",
+							"",
+							"pm.test('response body should be an object', () => {",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson).to.be.an('object');",
+							"});",
+							"",
+							"pm.test('response body should error', () => {",
+							"    const responseJson = pm.response.json();",
+							"    ",
+							"    pm.expect(responseJson).to.haveOwnProperty('hasil');",
+							"    pm.expect(responseJson).to.haveOwnProperty('pesan');",
+							"    pm.expect(responseJson.hasil).to.equals(true);",
+							"    pm.expect(responseJson.pesan).to.equals('ID member harus integer');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id_member",
+							"value": "a",
+							"type": "text"
+						},
+						{
+							"key": "id_parent_post",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "text",
+							"value": "jojo was here #good bro",
+							"type": "text"
+						},
+						{
+							"key": "media",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "127.0.0.1:4567/posting",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4567",
+					"path": [
+						"posting"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "posting param id_member tidak ada",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('status code should be 400', () => {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test('response header Content-Type should be application/json', () => {",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.equals('application/json; charset=utf-8');",
+							"});",
+							"",
+							"pm.test('response body should be an object', () => {",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson).to.be.an('object');",
+							"});",
+							"",
+							"pm.test('response body should error', () => {",
+							"    const responseJson = pm.response.json();",
+							"    ",
+							"    pm.expect(responseJson).to.haveOwnProperty('hasil');",
+							"    pm.expect(responseJson).to.haveOwnProperty('pesan');",
+							"    pm.expect(responseJson.hasil).to.equals(true);",
+							"    pm.expect(responseJson.pesan).to.equals('ID member tidak terdaftar');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id_member",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "id_parent_post",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "text",
+							"value": "jojo was here #good bro",
+							"type": "text"
+						},
+						{
+							"key": "media",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "127.0.0.1:4567/posting",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4567",
+					"path": [
+						"posting"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "posting param id_parent_post integer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('status code should be 400', () => {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test('response header Content-Type should be application/json', () => {",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.equals('application/json; charset=utf-8');",
+							"});",
+							"",
+							"pm.test('response body should be an object', () => {",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson).to.be.an('object');",
+							"});",
+							"",
+							"pm.test('response body should error', () => {",
+							"    const responseJson = pm.response.json();",
+							"    ",
+							"    pm.expect(responseJson).to.haveOwnProperty('hasil');",
+							"    pm.expect(responseJson).to.haveOwnProperty('pesan');",
+							"    pm.expect(responseJson.hasil).to.equals(true);",
+							"    pm.expect(responseJson.pesan).to.equals('ID parent post harus integer');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id_member",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "id_parent_post",
+							"value": "a",
+							"type": "text"
+						},
+						{
+							"key": "text",
+							"value": "jojo was here #good bro",
+							"type": "text"
+						},
+						{
+							"key": "media",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "127.0.0.1:4567/posting",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4567",
+					"path": [
+						"posting"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "posting param text empty",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('status code should be 400', () => {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test('response header Content-Type should be application/json', () => {",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.equals('application/json; charset=utf-8');",
+							"});",
+							"",
+							"pm.test('response body should be an object', () => {",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson).to.be.an('object');",
+							"});",
+							"",
+							"pm.test('response body should error', () => {",
+							"    const responseJson = pm.response.json();",
+							"    ",
+							"    pm.expect(responseJson).to.haveOwnProperty('hasil');",
+							"    pm.expect(responseJson).to.haveOwnProperty('pesan');",
+							"    pm.expect(responseJson.hasil).to.equals(true);",
+							"    pm.expect(responseJson.pesan).to.equals('Text wajib diisi');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id_member",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "id_parent_post",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "text",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "media",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "127.0.0.1:4567/posting",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4567",
+					"path": [
+						"posting"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "posting param text limit 1000",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('status code should be 400', () => {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test('response header Content-Type should be application/json', () => {",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.equals('application/json; charset=utf-8');",
+							"});",
+							"",
+							"pm.test('response body should be an object', () => {",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson).to.be.an('object');",
+							"});",
+							"",
+							"pm.test('response body should error', () => {",
+							"    const responseJson = pm.response.json();",
+							"    ",
+							"    pm.expect(responseJson).to.haveOwnProperty('hasil');",
+							"    pm.expect(responseJson).to.haveOwnProperty('pesan');",
+							"    pm.expect(responseJson.hasil).to.equals(true);",
+							"    pm.expect(responseJson.pesan).to.equals('Text maksimal 1000 karakter');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id_member",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "id_parent_post",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "text",
+							"value": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n\nWhy do we use it?\nIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).\n\n\nWhere does it come from?\nContrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.\n\nThe standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from \"de Finibus Bonorum et Malorum\" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.\n\n",
+							"type": "text"
+						},
+						{
+							"key": "media",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "127.0.0.1:4567/posting",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4567",
+					"path": [
+						"posting"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "posting status",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('status code should be 201', () => {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test('response header Content-Type should be application/json', () => {",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.equals('application/json; charset=utf-8');",
+							"});",
+							"",
+							"pm.test('response body should be an object', () => {",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson).to.be.an('object');",
+							"});",
+							"",
+							"pm.test('response body should error', () => {",
+							"    const responseJson = pm.response.json();",
+							"    ",
+							"    pm.expect(responseJson).to.haveOwnProperty('id');",
+							"    pm.expect(responseJson).to.haveOwnProperty('pesan');",
+							"    pm.expect(responseJson.pesan).to.equals('success');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id_member",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "id_parent_post",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "text",
+							"value": "jojo was here #good bro",
+							"type": "text"
+						},
+						{
+							"key": "media",
+							"value": "",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:4567/posting",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4567",
+					"path": [
+						"posting"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "posting status + upload file",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('status code should be 201', () => {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test('response header Content-Type should be application/json', () => {",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.equals('application/json; charset=utf-8');",
+							"});",
+							"",
+							"pm.test('response body should be an object', () => {",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson).to.be.an('object');",
+							"});",
+							"",
+							"pm.test('response body should error', () => {",
+							"    const responseJson = pm.response.json();",
+							"    ",
+							"    pm.expect(responseJson).to.haveOwnProperty('id');",
+							"    pm.expect(responseJson).to.haveOwnProperty('pesan');",
+							"    pm.expect(responseJson.pesan).to.equals('success upload');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id_member",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "id_parent_post",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "text",
+							"value": "jojo was here #good bro",
+							"type": "text"
+						},
+						{
+							"key": "media",
+							"type": "file",
+							"src": "5DWdbQ8AB/final_projek.txt"
+						}
+					]
+				},
+				"url": {
+					"raw": "127.0.0.1:4567/posting",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4567",
+					"path": [
+						"posting"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "posting comment",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('status code should be 201', () => {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test('response header Content-Type should be application/json', () => {",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.equals('application/json; charset=utf-8');",
+							"});",
+							"",
+							"pm.test('response body should be an object', () => {",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson).to.be.an('object');",
+							"});",
+							"",
+							"pm.test('response body should error', () => {",
+							"    const responseJson = pm.response.json();",
+							"    ",
+							"    pm.expect(responseJson).to.haveOwnProperty('id');",
+							"    pm.expect(responseJson).to.haveOwnProperty('pesan');",
+							"    pm.expect(responseJson.pesan).to.equals('success');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id_member",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "id_parent_post",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "text",
+							"value": "comment: jojo was here #good bro",
+							"type": "text"
+						},
+						{
+							"key": "media",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "127.0.0.1:4567/posting",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4567",
+					"path": [
+						"posting"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "posting comment + upload file",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('status code should be 201', () => {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test('response header Content-Type should be application/json', () => {",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.equals('application/json; charset=utf-8');",
+							"});",
+							"",
+							"pm.test('response body should be an object', () => {",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson).to.be.an('object');",
+							"});",
+							"",
+							"pm.test('response body should error', () => {",
+							"    const responseJson = pm.response.json();",
+							"    ",
+							"    pm.expect(responseJson).to.haveOwnProperty('id');",
+							"    pm.expect(responseJson).to.haveOwnProperty('pesan');",
+							"    pm.expect(responseJson.pesan).to.equals('success upload');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id_member",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "id_parent_post",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "text",
+							"value": "comment: jojo was here #good bro",
+							"type": "text"
+						},
+						{
+							"key": "media",
+							"type": "file",
+							"src": "DPHkHe0ZE/final_projek.txt"
+						}
+					]
+				},
+				"url": {
+					"raw": "127.0.0.1:4567/posting",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4567",
+					"path": [
+						"posting"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "single hashtag param integer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('status code should be 400', () => {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test('response header Content-Type should be application/json', () => {",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.equals('application/json; charset=utf-8');",
+							"});",
+							"",
+							"pm.test('response body should be an object', () => {",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson).to.be.an('object');",
+							"});",
+							"",
+							"pm.test('response body should error', () => {",
+							"    const responseJson = pm.response.json();",
+							"    ",
+							"    pm.expect(responseJson).to.haveOwnProperty('hasil');",
+							"    pm.expect(responseJson).to.haveOwnProperty('pesan');",
+							"    pm.expect(responseJson.hasil).to.equals(true);",
+							"    pm.expect(responseJson.pesan).to.equals('ID hashtag harus integer');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:4567/hashtag/a",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4567",
+					"path": [
+						"hashtag",
+						"a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "single hashtag param tidak ada",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('status code should be 400', () => {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test('response header Content-Type should be application/json', () => {",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.equals('application/json; charset=utf-8');",
+							"});",
+							"",
+							"pm.test('response body should be an object', () => {",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson).to.be.an('object');",
+							"});",
+							"",
+							"pm.test('response body should error', () => {",
+							"    const responseJson = pm.response.json();",
+							"    ",
+							"    pm.expect(responseJson).to.haveOwnProperty('hasil');",
+							"    pm.expect(responseJson).to.haveOwnProperty('pesan');",
+							"    pm.expect(responseJson.hasil).to.equals(true);",
+							"    pm.expect(responseJson.pesan).to.equals('ID hashtag tidak ada di database');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:4567/hashtag/0",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4567",
+					"path": [
+						"hashtag",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "single post param integer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('status code should be 400', () => {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test('response header Content-Type should be application/json', () => {",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.equals('application/json; charset=utf-8');",
+							"});",
+							"",
+							"pm.test('response body should be an object', () => {",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson).to.be.an('object');",
+							"});",
+							"",
+							"pm.test('response body should error', () => {",
+							"    const responseJson = pm.response.json();",
+							"    ",
+							"    pm.expect(responseJson).to.haveOwnProperty('hasil');",
+							"    pm.expect(responseJson).to.haveOwnProperty('pesan');",
+							"    pm.expect(responseJson.hasil).to.equals(true);",
+							"    pm.expect(responseJson.pesan).to.equals('ID post harus integer');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:4567/post/a",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4567",
+					"path": [
+						"post",
+						"a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "single post param tidak ada",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('status code should be 400', () => {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test('response header Content-Type should be application/json', () => {",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.equals('application/json; charset=utf-8');",
+							"});",
+							"",
+							"pm.test('response body should be an object', () => {",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson).to.be.an('object');",
+							"});",
+							"",
+							"pm.test('response body should error', () => {",
+							"    const responseJson = pm.response.json();",
+							"    ",
+							"    pm.expect(responseJson).to.haveOwnProperty('hasil');",
+							"    pm.expect(responseJson).to.haveOwnProperty('pesan');",
+							"    pm.expect(responseJson.hasil).to.equals(true);",
+							"    pm.expect(responseJson.pesan).to.equals('ID post tidak ada di database');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:4567/post/0",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4567",
+					"path": [
+						"post",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "show trending hashtag",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('status code should be 200', () => {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test('response header Content-Type should be text/html', () => {",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.equals('text/html;charset=utf-8');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:4567/",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4567",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "single post valid",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('status code should be 200', () => {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test('response header Content-Type should be text/html', () => {",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.equals('text/html;charset=utf-8');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:4567/post/1",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4567",
+					"path": [
+						"post",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "single hashtag valid",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('status code should be 200', () => {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test('response header Content-Type should be text/html', () => {",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.equals('text/html;charset=utf-8');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:4567/hashtag/1",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4567",
+					"path": [
+						"hashtag",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
