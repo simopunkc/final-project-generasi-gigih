@@ -5,9 +5,9 @@ class M_api_db_tambah_post
         client.last_id
     end
 
-    def insert_media(lokasi,ext)
+    def insert_media(lokasi,mime)
         client = M_koneksi_db.new.buat_koneksi_db
-        client.query("INSERT INTO tb_media (lokasi,ext) values ('#{lokasi}','#{ext}')")
+        client.query("INSERT INTO tb_media (lokasi,mime) values ('#{lokasi}','#{mime}')")
         client.last_id
     end
 

@@ -3,6 +3,8 @@ require 'sinatra'
 require 'mysql2'
 require 'fileutils'
 require 'date'
+require 'mimemagic'
+require 'securerandom'
 set :public_folder, File.dirname(__FILE__)
 set :bind, "0.0.0.0"
 require "./controllers/c_modules/c_cek_integer"
@@ -64,27 +66,34 @@ post '/posting' do
     if error_value[:hasil] == true
         return JSON.generate(error_value)
     end
-    # model = M_api_db_tambah_post.new
-    # id_post = model.insert_post(params["id_member"],params["id_parent_post"],params["text"])
-    # ambil_hashtag = controller.get_hashtag(params["text"])
-    # if ambil_hashtag.size > 0
-    #     ambil_hashtag.each do |hashtag|
-    #         id_hashtag = model.get_id_hashtag(hashtag)
-    #         if id_hashtag == 0
-    #             id_hashtag = model.insert_hashtag(hashtag)
-    #         end
-    #         if model.cek_duplikat_hashtag(id_hashtag, id_post) == 0
-    #             model.insert_hashtag_post(id_hashtag, id_post)
-    #         end
-    #     end
-    # end
-    if params["media"] != nil and params["media"] != ""
-        dir_upload = controller.create_folder_upload(params["id_member"])
-        filename = controller.hapus_spesial_character(params['media'][:filename])
-        File.open(dir_upload+filename,"w") do |f|
-            f.write(params['media'][:tempfile].read)
+    model = M_api_db_tambah_post.new
+    id_post = model.insert_post(params["id_member"],params["id_parent_post"],params["text"])
+    ambil_hashtag = controller.get_hashtag(params["text"])
+    if ambil_hashtag.size > 0
+        ambil_hashtag.each do |hashtag|
+            id_hashtag = model.get_id_hashtag(hashtag)
+            if id_hashtag == 0
+                id_hashtag = model.insert_hashtag(hashtag)
+            end
+            if model.cek_duplikat_hashtag(id_hashtag, id_post) == 0
+                model.insert_hashtag_post(id_hashtag, id_post)
+            end
         end
     end
+    if params["media"] == nil or params["media"] == ""
+        return JSON.generate({:pesan=>"post diinsert ke db dengan ID #{id_post}"})
+    end
+    dir_upload = controller.create_folder_upload(params["id_member"])
+    filename = controller.hapus_spesial_character(params['media'][:filename])
+    uniqid = SecureRandom.hex(4)
+    lokasi = dir_upload+uniqid+filename
+    File.open(lokasi,"w") do |f|
+        f.write(params['media'][:tempfile].read)
+    end
+    mime = MimeMagic.by_magic(File.open(lokasi))
+    id_media = model.insert_media(lokasi,mime)
+    id_post_media = model.insert_post_media(id_post,id_media)
+    return JSON.generate({:pesan=>"Berhasil posting"})
 end
 
 get '/hashtag/:id' do

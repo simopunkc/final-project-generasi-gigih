@@ -40,12 +40,12 @@ describe M_api_db_tambah_post do
     end
     it "#insert_media" do
         media = M_raw_media.new('','upload/file.jpg','.jpg')
-        query = "INSERT INTO tb_media (lokasi,ext) values ('#{media.lokasi}','#{media.ext}')"
+        query = "INSERT INTO tb_media (lokasi,mime) values ('#{media.lokasi}','#{media.mime}')"
         mock = double
         allow(Mysql2::Client).to receive(:new).and_return(mock)
         expect(mock).to receive(:query).with(query)
         expect(mock).to receive(:last_id)
-        M_api_db_tambah_post.new.insert_media(media.lokasi,media.ext)
+        M_api_db_tambah_post.new.insert_media(media.lokasi,media.mime)
     end
     it "#insert_post_media" do
         post = M_raw_post.new(1,1,0,'lorem ipsum','')

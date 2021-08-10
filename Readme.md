@@ -38,6 +38,9 @@ gem install puma
 gem install reel  
 gem install http  
 gem install webrick  
+gem install mimemagic  
+gem install travis  
+apt install ansible  
 
 # Installations
 cd  

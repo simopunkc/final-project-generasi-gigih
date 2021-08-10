@@ -65,12 +65,12 @@ DROP TABLE IF EXISTS `tb_media`;
 CREATE TABLE `tb_media` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `lokasi` varchar(255) NOT NULL,
-  `ext` varchar(10) DEFAULT NULL,
+  `mime` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `lokasi` (`lokasi`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 LOCK TABLES `tb_media` WRITE;
-INSERT INTO `tb_media` (id,lokasi,ext) VALUES (1,'upload/2021-August-09/post1.jpg','.jpg');
+INSERT INTO `tb_media` (id,lokasi,mime) VALUES (1,'upload/2021-August-09/post1.jpg','image/jpg');
 UNLOCK TABLES;
 
 

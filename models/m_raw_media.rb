@@ -1,8 +1,8 @@
 class M_raw_media
-    attr_accessor :id, :lokasi, :ext
-    def initialize(id=nil, lokasi=nil, ext=nil)
+    attr_accessor :id, :lokasi, :mime
+    def initialize(id=nil, lokasi=nil, mime=nil)
         @id = id
         @lokasi = lokasi
-        @ext = ext
+        @mime = mime
     end
 end
