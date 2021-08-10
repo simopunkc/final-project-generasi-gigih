@@ -1,11 +1,3 @@
-DROP DATABASE IF EXISTS db_generasigigih;
-CREATE DATABASE db_generasigigih;
-DROP USER IF EXISTS 'gigih'@'localhost';
-CREATE USER 'gigih'@'localhost' IDENTIFIED BY 'gigih';
-GRANT ALL PRIVILEGES ON db_generasigigih.* TO 'gigih'@'localhost';
-FLUSH PRIVILEGES;
-USE db_generasigigih;
-
 DROP TABLE IF EXISTS `tb_member`;
 CREATE TABLE `tb_member` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
@@ -72,7 +64,7 @@ CREATE TABLE `tb_media` (
   UNIQUE KEY `lokasi` (`lokasi`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 LOCK TABLES `tb_media` WRITE;
-INSERT INTO `tb_media` (id,lokasi,mime) VALUES (1,'upload/member1/2021-August-10/ae9ac183reflektif.txt','');
+INSERT INTO `tb_media` (id,lokasi,mime) VALUES (1,'upload/member1/2021-August-10/test-reflektif.txt','');
 UNLOCK TABLES;
 
 

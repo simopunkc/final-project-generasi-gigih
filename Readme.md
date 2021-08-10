@@ -48,10 +48,14 @@ apt install ansible
 cd  
 git clone https://github.com/simopunkc/final-project-generasi-gigih.git  
 cd final-project-generasi-gigih  
-mysql -u root < database.sql  
+
+# Notes: reset the Database before running test
+mysql -u root < database_reset.sql  
+mysql -u root db_generasigigih < database.sql  
 
 # Testing
-# Notes: Coverage should be 100%, reset the Database before running test
+# Coverage should be 100%
+# Postman test should be Passed 100%
 rspec --init  
 rspec spec/  
 
