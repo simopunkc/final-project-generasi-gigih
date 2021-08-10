@@ -5,6 +5,12 @@ describe C_api_db_single_hashtag do
         output = C_api_db_single_hashtag.new.cek_valid(0)
         expect(output).to eq({:hasil=>true, :pesan=>"ID hashtag tidak ada di database"})
     end
+    it "should render view single hashtag" do
+        kumpul_post = []
+        view = ERB.new(File.read("./views/v_api_db_single_hashtag.erb")).result(binding)
+        output = C_api_db_single_hashtag.new.print_output(kumpul_post)
+        expect(output).to eq(view)
+    end
     before(:each) do
         @double = instance_double(C_api_db_single_hashtag)
     end
