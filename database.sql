@@ -1,11 +1,10 @@
 DROP DATABASE IF EXISTS db_generasigigih;
 CREATE DATABASE db_generasigigih;
-DROP USER IF EXISTS gigih
+DROP USER IF EXISTS 'gigih'@'localhost';
 CREATE USER 'gigih'@'localhost' IDENTIFIED BY 'gigih';
 GRANT ALL PRIVILEGES ON db_generasigigih.* TO 'gigih'@'localhost';
 FLUSH PRIVILEGES;
 USE db_generasigigih;
-
 
 DROP TABLE IF EXISTS `tb_member`;
 CREATE TABLE `tb_member` (
