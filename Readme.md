@@ -46,6 +46,7 @@ apt install ansible
 cd  
 git clone https://github.com/simopunkc/final-project-generasi-gigih.git  
 cd final-project-generasi-gigih  
+mysql -u root < database.sql  
 rspec --init  
 
 # Test

@@ -3,6 +3,7 @@ CREATE DATABASE db_generasigigih;
 CREATE USER 'gigih'@'localhost' IDENTIFIED BY 'gigih';
 GRANT ALL PRIVILEGES ON db_generasigigih.* TO 'gigih'@'localhost';
 FLUSH PRIVILEGES;
+USE db_generasigigih;
 
 
 DROP TABLE IF EXISTS `tb_member`;
