@@ -1,4 +1,4 @@
-DROP DATABASE db_generasigigih;
+DROP DATABASE IF EXISTS db_generasigigih;
 CREATE DATABASE db_generasigigih;
 CREATE USER 'gigih'@'localhost' IDENTIFIED BY 'gigih';
 GRANT ALL PRIVILEGES ON db_generasigigih.* TO 'gigih'@'localhost';

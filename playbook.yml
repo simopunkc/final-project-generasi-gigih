@@ -15,11 +15,10 @@
     register: foo
   - debug: msg="the echo was {{ foo.stdout }}"
 
-  - name: Create App directory
-    file:
-      path: /app
-      state: directory
-      
+  - shell: rm -rf /app
+  - shell: git clone https://github.com/simopunkc/final-project-generasi-gigih.git /app
+  - shell: mysql -u root < /app/database.sql
+
   # - name: install sinatra systemd
   #   copy:
   #     src: /app/sinatra.service
