@@ -1,6 +1,10 @@
 require "./controllers/c_api_db_single_hashtag"
 
 describe C_api_db_single_hashtag do
+    it "should invalid id hashtag" do
+        output = C_api_db_single_hashtag.new.cek_valid(0)
+        expect(output).to eq({:hasil=>true, :pesan=>"ID hashtag tidak ada di database"})
+    end
     before(:each) do
         @double = instance_double(C_api_db_single_hashtag)
     end
