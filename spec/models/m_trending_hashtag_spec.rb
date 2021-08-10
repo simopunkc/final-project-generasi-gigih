@@ -1,4 +1,3 @@
-# require "./models/m_raw_hashtag"
 # require "./models/m_api_db_trending_hashtag"
 
 # describe M_api_db_trending_hashtag do

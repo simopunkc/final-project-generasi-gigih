@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2021-08-10T07:05:57+07:00">2021-08-10T07:05:57+07:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2021-08-10T07:11:24+07:00">2021-08-10T07:11:24+07:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -30,7 +30,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         3.04
+         3.03
        </span>
     </span> hits/line
     )
@@ -43,8 +43,8 @@
   </div>
 
   <div class="t-line-summary">
-    <b>608</b> relevant lines,
-    <span class="green"><b>608</b> lines covered</span> and
+    <b>611</b> relevant lines,
+    <span class="green"><b>611</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed. </span>
     (<span class="green">
   100.0%
@@ -216,11 +216,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#2a5ad81cae941b1b4e39349d9604ba23d1f814e5" class="src_link" title="spec/controllers/c_single_post_spec.rb">spec/controllers/c_single_post_spec.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">49</td>
-            <td class="cell--number">40</td>
-            <td class="cell--number">40</td>
+            <td class="cell--number">52</td>
+            <td class="cell--number">43</td>
+            <td class="cell--number">43</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">1.13</td>
+            <td class="cell--number">1.12</td>
             
           </tr>
         
@@ -282,7 +282,7 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#9a4eb3d90a5ed2edc8778249fac03d377b5f54a0" class="src_link" title="spec/models/m_trending_hashtag_spec.rb">spec/models/m_trending_hashtag_spec.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">15</td>
+            <td class="cell--number">14</td>
             <td class="cell--number">0</td>
             <td class="cell--number">0</td>
             <td class="cell--number">0</td>
@@ -6686,8 +6686,8 @@
     
 
     <div class="t-line-summary">
-      <b>40</b> relevant lines.
-      <span class="green"><b>40</b> lines covered</span> and
+      <b>43</b> relevant lines.
+      <span class="green"><b>43</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -6749,7 +6749,7 @@
 
             
 
-            <code class="ruby">        output = C_api_db_single_post.new.cek_valid(0)</code>
+            <code class="ruby">        allow(@double).to receive(:cek_valid).with(0).and_return({:hasil=&gt;true, :pesan=&gt;&quot;ID post tidak ada di database&quot;})</code>
           </li>
         </div>
       
@@ -6760,18 +6760,18 @@
 
             
 
-            <code class="ruby">        expect(output).to eq({:hasil=&gt;true, :pesan=&gt;&quot;ID post tidak ada di database&quot;})</code>
+            <code class="ruby">        output = @double.cek_valid(0)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="7">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="7">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">    end</code>
+            
+
+            <code class="ruby">        expect(@double).to have_received(:cek_valid).with(0)</code>
           </li>
         </div>
       
@@ -6782,7 +6782,7 @@
 
             
 
-            <code class="ruby">    it &quot;should render view single post&quot; do</code>
+            <code class="ruby">        expect(output).to eq({:hasil=&gt;true, :pesan=&gt;&quot;ID post tidak ada di database&quot;})</code>
           </li>
         </div>
       
@@ -6793,45 +6793,12 @@
 
             
 
-            <code class="ruby">        single_post = [[],[]]</code>
+            <code class="ruby">        C_api_db_single_post.new.cek_valid(0)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="10">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        view = ERB.new(File.read(&quot;./views/v_api_db_single_post.erb&quot;)).result(binding)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="11">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        output = C_api_db_single_post.new.print_output(single_post)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="12">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        expect(output).to eq(view)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="13">
+          <li class="never" data-hits="" data-linenumber="10">
             
             
 
@@ -6842,24 +6809,57 @@
         </div>
       
         <div>
+          <li class="covered" data-hits="1" data-linenumber="11">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    it &quot;should render view single post&quot; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="12">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        single_post = [[],[]]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="13">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        view = ERB.new(File.read(&quot;./views/v_api_db_single_post.erb&quot;)).result(binding)</code>
+          </li>
+        </div>
+      
+        <div>
           <li class="covered" data-hits="1" data-linenumber="14">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">    before(:each) do</code>
+            <code class="ruby">        output = C_api_db_single_post.new.print_output(single_post)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="6" data-linenumber="15">
-            <span class="hits">6</span>
+          <li class="covered" data-hits="1" data-linenumber="15">
+            <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">        @double = instance_double(C_api_db_single_post)</code>
+            <code class="ruby">        expect(output).to eq(view)</code>
           </li>
         </div>
       
@@ -6881,29 +6881,29 @@
 
             
 
-            <code class="ruby">    it &quot;should blank param id post&quot; do</code>
+            <code class="ruby">    before(:each) do</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="18">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="6" data-linenumber="18">
+            <span class="hits">6</span>
             
 
             
 
-            <code class="ruby">        parameter = {}</code>
+            <code class="ruby">        @double = instance_double(C_api_db_single_post)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="19">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="19">
+            
             
 
             
 
-            <code class="ruby">        allow(@double).to receive(:cek_param_request).with(parameter).and_return({:hasil =&gt; true, :pesan =&gt; &quot;Param ID post tidak ditemukan&quot;})</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -6914,7 +6914,7 @@
 
             
 
-            <code class="ruby">        output = @double.cek_param_request(parameter)</code>
+            <code class="ruby">    it &quot;should blank param id post&quot; do</code>
           </li>
         </div>
       
@@ -6925,7 +6925,7 @@
 
             
 
-            <code class="ruby">        expect(@double).to have_received(:cek_param_request).with(parameter)</code>
+            <code class="ruby">        parameter = {}</code>
           </li>
         </div>
       
@@ -6936,7 +6936,7 @@
 
             
 
-            <code class="ruby">        expect(output).to eq({:hasil =&gt; true, :pesan =&gt; &quot;Param ID post tidak ditemukan&quot;})</code>
+            <code class="ruby">        allow(@double).to receive(:cek_param_request).with(parameter).and_return({:hasil =&gt; true, :pesan =&gt; &quot;Param ID post tidak ditemukan&quot;})</code>
           </li>
         </div>
       
@@ -6947,18 +6947,18 @@
 
             
 
-            <code class="ruby">        C_api_db_single_post.new.cek_param_request(parameter)</code>
+            <code class="ruby">        output = @double.cek_param_request(parameter)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="24">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="24">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">    end</code>
+            
+
+            <code class="ruby">        expect(@double).to have_received(:cek_param_request).with(parameter)</code>
           </li>
         </div>
       
@@ -6969,7 +6969,7 @@
 
             
 
-            <code class="ruby">    it &quot;should blank value id post&quot; do</code>
+            <code class="ruby">        expect(output).to eq({:hasil =&gt; true, :pesan =&gt; &quot;Param ID post tidak ditemukan&quot;})</code>
           </li>
         </div>
       
@@ -6980,18 +6980,18 @@
 
             
 
-            <code class="ruby">        parameter = {:id=&gt;&quot;&quot;}</code>
+            <code class="ruby">        C_api_db_single_post.new.cek_param_request(parameter)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="27">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="27">
+            
             
 
             
 
-            <code class="ruby">        allow(@double).to receive(:cek_valid).with(parameter[:id]).and_return({:hasil =&gt; true, :pesan =&gt; &quot;ID post wajib diisi&quot;})</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -7002,7 +7002,7 @@
 
             
 
-            <code class="ruby">        output = @double.cek_valid(parameter[:id])</code>
+            <code class="ruby">    it &quot;should blank value id post&quot; do</code>
           </li>
         </div>
       
@@ -7013,7 +7013,7 @@
 
             
 
-            <code class="ruby">        expect(@double).to have_received(:cek_valid).with(parameter[:id])</code>
+            <code class="ruby">        parameter = {:id=&gt;&quot;&quot;}</code>
           </li>
         </div>
       
@@ -7024,7 +7024,7 @@
 
             
 
-            <code class="ruby">        expect(output).to eq({:hasil =&gt; true, :pesan =&gt; &quot;ID post wajib diisi&quot;})</code>
+            <code class="ruby">        allow(@double).to receive(:cek_valid).with(parameter[:id]).and_return({:hasil =&gt; true, :pesan =&gt; &quot;ID post wajib diisi&quot;})</code>
           </li>
         </div>
       
@@ -7035,18 +7035,18 @@
 
             
 
-            <code class="ruby">        C_api_db_single_post.new.cek_valid(parameter[:id])</code>
+            <code class="ruby">        output = @double.cek_valid(parameter[:id])</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="32">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="32">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">    end</code>
+            
+
+            <code class="ruby">        expect(@double).to have_received(:cek_valid).with(parameter[:id])</code>
           </li>
         </div>
       
@@ -7057,7 +7057,7 @@
 
             
 
-            <code class="ruby">    it &quot;should integer value id post&quot; do</code>
+            <code class="ruby">        expect(output).to eq({:hasil =&gt; true, :pesan =&gt; &quot;ID post wajib diisi&quot;})</code>
           </li>
         </div>
       
@@ -7068,18 +7068,18 @@
 
             
 
-            <code class="ruby">        parameter = {:id=&gt;&quot;a&quot;}</code>
+            <code class="ruby">        C_api_db_single_post.new.cek_valid(parameter[:id])</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="35">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="35">
+            
             
 
             
 
-            <code class="ruby">        allow(@double).to receive(:cek_valid).with(parameter[:id]).and_return({:hasil =&gt; true, :pesan =&gt; &quot;ID post harus integer&quot;})</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -7090,7 +7090,7 @@
 
             
 
-            <code class="ruby">        output = @double.cek_valid(parameter[:id])</code>
+            <code class="ruby">    it &quot;should integer value id post&quot; do</code>
           </li>
         </div>
       
@@ -7101,7 +7101,7 @@
 
             
 
-            <code class="ruby">        expect(@double).to have_received(:cek_valid).with(parameter[:id])</code>
+            <code class="ruby">        parameter = {:id=&gt;&quot;a&quot;}</code>
           </li>
         </div>
       
@@ -7112,7 +7112,7 @@
 
             
 
-            <code class="ruby">        expect(output).to eq({:hasil =&gt; true, :pesan =&gt; &quot;ID post harus integer&quot;})</code>
+            <code class="ruby">        allow(@double).to receive(:cek_valid).with(parameter[:id]).and_return({:hasil =&gt; true, :pesan =&gt; &quot;ID post harus integer&quot;})</code>
           </li>
         </div>
       
@@ -7123,67 +7123,12 @@
 
             
 
-            <code class="ruby">        C_api_db_single_post.new.cek_valid(parameter[:id])</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="40">
-            
-            
-
-            
-
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="41">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    it &quot;should valid value param&quot; do</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="42">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        parameter = {:id=&gt;&quot;1&quot;}</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="43">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        allow(@double).to receive(:cek_valid).with(parameter[:id]).and_return({:hasil =&gt; false, :pesan =&gt; &quot;&quot;})</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="44">
-            <span class="hits">1</span>
-            
-
-            
-
             <code class="ruby">        output = @double.cek_valid(parameter[:id])</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="45">
+          <li class="covered" data-hits="1" data-linenumber="40">
             <span class="hits">1</span>
             
 
@@ -7194,18 +7139,18 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="46">
+          <li class="covered" data-hits="1" data-linenumber="41">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">        expect(output).to eq({:hasil =&gt; false, :pesan =&gt; &quot;&quot;})</code>
+            <code class="ruby">        expect(output).to eq({:hasil =&gt; true, :pesan =&gt; &quot;ID post harus integer&quot;})</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="47">
+          <li class="covered" data-hits="1" data-linenumber="42">
             <span class="hits">1</span>
             
 
@@ -7216,7 +7161,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="48">
+          <li class="never" data-hits="" data-linenumber="43">
             
             
 
@@ -7227,7 +7172,95 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="49">
+          <li class="covered" data-hits="1" data-linenumber="44">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    it &quot;should valid value param&quot; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="45">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        parameter = {:id=&gt;&quot;1&quot;}</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="46">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        allow(@double).to receive(:cek_valid).with(parameter[:id]).and_return({:hasil =&gt; false, :pesan =&gt; &quot;&quot;})</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="47">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        output = @double.cek_valid(parameter[:id])</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="48">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        expect(@double).to have_received(:cek_valid).with(parameter[:id])</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="49">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        expect(output).to eq({:hasil =&gt; false, :pesan =&gt; &quot;&quot;})</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="50">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        C_api_db_single_post.new.cek_valid(parameter[:id])</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="51">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="52">
             
             
 
@@ -9410,7 +9443,7 @@
 
             
 
-            <code class="ruby"># require &quot;./models/m_raw_hashtag&quot;</code>
+            <code class="ruby"># require &quot;./models/m_api_db_trending_hashtag&quot;</code>
           </li>
         </div>
       
@@ -9421,7 +9454,7 @@
 
             
 
-            <code class="ruby"># require &quot;./models/m_api_db_trending_hashtag&quot;</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -9432,7 +9465,7 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby"># describe M_api_db_trending_hashtag do</code>
           </li>
         </div>
       
@@ -9443,7 +9476,7 @@
 
             
 
-            <code class="ruby"># describe M_api_db_trending_hashtag do</code>
+            <code class="ruby">#     before(:each) do</code>
           </li>
         </div>
       
@@ -9454,7 +9487,7 @@
 
             
 
-            <code class="ruby">#     before(:each) do</code>
+            <code class="ruby">#         @double = instance_double(M_api_db_trending_hashtag)</code>
           </li>
         </div>
       
@@ -9465,7 +9498,7 @@
 
             
 
-            <code class="ruby">#         @double = instance_double(M_api_db_trending_hashtag)</code>
+            <code class="ruby">#     end</code>
           </li>
         </div>
       
@@ -9476,7 +9509,7 @@
 
             
 
-            <code class="ruby">#     end</code>
+            <code class="ruby">#     it &quot;#get_trending_hashtag&quot; do</code>
           </li>
         </div>
       
@@ -9487,7 +9520,7 @@
 
             
 
-            <code class="ruby">#     it &quot;#get_trending_hashtag&quot; do</code>
+            <code class="ruby">#         allow(@double).to receive(:get_trending_hashtag).and_return(1)</code>
           </li>
         </div>
       
@@ -9498,7 +9531,7 @@
 
             
 
-            <code class="ruby">#         allow(@double).to receive(:get_trending_hashtag).and_return(1)</code>
+            <code class="ruby">#         output = @double.get_trending_hashtag</code>
           </li>
         </div>
       
@@ -9509,7 +9542,7 @@
 
             
 
-            <code class="ruby">#         output = @double.get_trending_hashtag</code>
+            <code class="ruby">#         expect(@double).to have_received(:get_trending_hashtag)</code>
           </li>
         </div>
       
@@ -9520,7 +9553,7 @@
 
             
 
-            <code class="ruby">#         expect(@double).to have_received(:get_trending_hashtag)</code>
+            <code class="ruby">#         expect(output).to eq(1)</code>
           </li>
         </div>
       
@@ -9531,7 +9564,7 @@
 
             
 
-            <code class="ruby">#         expect(output).to eq(1)</code>
+            <code class="ruby">#         M_api_db_trending_hashtag.new.get_trending_hashtag</code>
           </li>
         </div>
       
@@ -9542,23 +9575,12 @@
 
             
 
-            <code class="ruby">#         M_api_db_trending_hashtag.new.get_trending_hashtag</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="14">
-            
-            
-
-            
-
             <code class="ruby">#     end</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="15">
+          <li class="never" data-hits="" data-linenumber="14">
             
             
 

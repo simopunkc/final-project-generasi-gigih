@@ -2,8 +2,11 @@ require "./controllers/c_api_db_single_post"
 
 describe C_api_db_single_post do
     it "should invalid id post" do
-        output = C_api_db_single_post.new.cek_valid(0)
+        allow(@double).to receive(:cek_valid).with(0).and_return({:hasil=>true, :pesan=>"ID post tidak ada di database"})
+        output = @double.cek_valid(0)
+        expect(@double).to have_received(:cek_valid).with(0)
         expect(output).to eq({:hasil=>true, :pesan=>"ID post tidak ada di database"})
+        C_api_db_single_post.new.cek_valid(0)
     end
     it "should render view single post" do
         single_post = [[],[]]
