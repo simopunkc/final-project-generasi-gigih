@@ -1,6 +1,8 @@
+require "./models/m_modules/m_detail_media"
 require "./models/m_modules/m_detail_post"
 
 class M_api_db_single_post
+    include M_detail_media
     include M_detail_post
 
     def get_media_post(id_post)

@@ -9,7 +9,7 @@ describe C_api_db_single_post do
         C_api_db_single_post.new.cek_valid(0)
     end
     it "should render view single post" do
-        single_post = [[],[]]
+        single_post = [[],[],[]]
         view = ERB.new(File.read("./views/v_api_db_single_post.erb")).result(binding)
         output = C_api_db_single_post.new.print_output(single_post)
         expect(output).to eq(view)

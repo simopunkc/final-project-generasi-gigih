@@ -12,6 +12,14 @@ describe M_api_db_single_post do
         expect(output).to eq(1)
         M_api_db_single_post.new.get_media_post(post.id)
     end
+    it "#get_detail_media" do
+        media = M_raw_media.new(1,'','')
+        allow(@double).to receive(:get_detail_media).with(media.id).and_return(1)
+        output = @double.get_detail_media(media.id)
+        expect(@double).to have_received(:get_detail_media).with(media.id)
+        expect(output).to eq(1)
+        M_api_db_single_post.new.get_detail_media(media.id)
+    end
     it "#get_detail_post" do
         post = M_raw_post.new(1,'','','','')
         allow(@double).to receive(:get_detail_post).with(post.id).and_return(1)

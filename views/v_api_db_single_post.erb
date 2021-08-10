@@ -1,5 +1,9 @@
 <h1># Single Post</h1>
-<% single_post[0].each do |data| %>
+<% single_post[0].each do |media| %>
+<div class="media">
+</div>
+<% end %>
+<% single_post[1].each do |data| %>
 <table>
     <thead>
         <th>id</th>
@@ -21,7 +25,7 @@
     </tbody>
 </table>
 <% end %>
-<% single_post[1].each do |data_komen| %>
+<% single_post[2].each do |data_komen| %>
 <table>
     <thead>
         <th>id comment</th>

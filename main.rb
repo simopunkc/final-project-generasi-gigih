@@ -128,14 +128,21 @@ get '/post/:id' do
     end
     model = M_api_db_single_post.new
     single_post = Array.new
+    data_media = Array.new
     data_post = Array.new
     data_comment = Array.new
+    daftar_media = model.get_media_post(params[:id])
+    daftar_media.each do |media|
+        file = model.get_detail_media(media)
+        data_media.push(file)
+    end
     data_post = model.get_detail_post(params[:id])
     daftar_comment = model.get_all_post_comment(params[:id])
     daftar_comment.each do |comment|
         komen = model.get_detail_post(comment)
         data_comment.push(komen)
     end
+    single_post.push(data_media)
     single_post.push(data_post)
     single_post.push(data_comment)
     return controller.print_output(single_post)
