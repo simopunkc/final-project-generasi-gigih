@@ -1,10 +1,15 @@
-<h1># Single Post</h1>
 <% single_post[0].each do |media| %>
-<div class="media">
-</div>
+    <p>Media</p>
+    <% media.each do |file| %>
+    <div class="media">
+    <%= file.lokasi %>
+    </div>
+    <br/>
+    <% end %>
 <% end %>
+<p>Post</p>
 <% single_post[1].each do |data| %>
-<table>
+<table border="1">
     <thead>
         <th>id</th>
         <th>id_member</th>
@@ -25,8 +30,9 @@
     </tbody>
 </table>
 <% end %>
+<p>Komentar</p>
 <% single_post[2].each do |data_komen| %>
-<table>
+<table border="1">
     <thead>
         <th>id comment</th>
         <th>id_member</th>
@@ -48,4 +54,5 @@
     <% end %>
     </tbody>
 </table>
+<br/>
 <% end %>
