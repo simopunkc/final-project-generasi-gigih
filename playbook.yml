@@ -66,7 +66,7 @@
       ignore_errors: true
 
   - name: delete sinatra
-    shell: rm -rf dest: /etc/systemd/system/sinatra.service
+    shell: rm -rf /etc/systemd/system/sinatra.service
     ignore_errors: true
 
   - name: install sinatra systemd
