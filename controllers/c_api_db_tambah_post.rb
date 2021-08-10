@@ -19,10 +19,14 @@ class C_api_db_tambah_post
         return error
     end
 
-    def create_folder_upload
+    def hapus_spesial_character(namafile)
+        return namafile.gsub(/[^A-Za-z0-9\-\_]/,'')
+    end
+
+    def create_folder_upload(id_member)
         waktu = DateTime.now
         tgl = waktu.strftime("%Y-%B-%d")
-        direktori = 'upload/'+tgl
+        direktori = 'upload/'+'member'+id_member.to_s+'/'+tgl+'/'
         FileUtils.mkdir_p direktori, :mode => 0777 unless Dir.exist?(direktori)
         return direktori
     end

@@ -1,6 +1,11 @@
 require "./controllers/c_api_db_tambah_post"
 
 describe C_api_db_tambah_post do
+    it "should remove spesial character" do
+        parameter = "aku suka !@$%^&*()-= makan"
+        output = C_api_db_tambah_post.new.hapus_spesial_character(parameter)
+        expect(output).to eq("akusuka-makan")
+    end
     before(:each) do
         @double = instance_double(C_api_db_tambah_post)
     end
@@ -45,13 +50,13 @@ describe C_api_db_tambah_post do
         C_api_db_tambah_post.new.cek_param_request(parameter)
     end
     it "should create folder upload" do
-        tgl = '2021-August-09'
-        direktori = 'upload/'+tgl
-        allow(@double).to receive(:create_folder_upload).and_return(direktori)
-        output = @double.create_folder_upload
-        expect(@double).to have_received(:create_folder_upload)
+        tgl = '2021-August-10'
+        direktori = 'upload/member1/'+tgl+'/'
+        allow(@double).to receive(:create_folder_upload).with(1).and_return(direktori)
+        output = @double.create_folder_upload(1)
+        expect(@double).to have_received(:create_folder_upload).with(1)
         expect(output).to eq(direktori)
-        C_api_db_tambah_post.new.create_folder_upload
+        C_api_db_tambah_post.new.create_folder_upload(1)
     end
     it "should blank ID member" do
         post = M_raw_post.new('','',1,'lorem ipsum','')

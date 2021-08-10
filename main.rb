@@ -55,19 +55,18 @@ post '/register' do
 end
 
 post '/posting' do
-    # parameter = JSON.parse(request.body.read)
-    # controller = C_api_db_tambah_post.new
-    # error_request = controller.cek_param_request(parameter)
-    # if error_request[:hasil] == true
-    #     return JSON.generate(error_request)
-    # end
-    # error_value = controller.cek_valid(parameter["id_member"],parameter["id_parent_post"],parameter["text"])
-    # if error_value[:hasil] == true
-    #     return JSON.generate(error_value)
-    # end
+    controller = C_api_db_tambah_post.new
+    error_request = controller.cek_param_request(params)
+    if error_request[:hasil] == true
+        return JSON.generate(error_request)
+    end
+    error_value = controller.cek_valid(params["id_member"],params["id_parent_post"],params["text"])
+    if error_value[:hasil] == true
+        return JSON.generate(error_value)
+    end
     # model = M_api_db_tambah_post.new
-    # id_post = model.insert_post(parameter["id_member"],parameter["id_parent_post"],parameter["text"])
-    # ambil_hashtag = controller.get_hashtag(parameter["text"])
+    # id_post = model.insert_post(params["id_member"],params["id_parent_post"],params["text"])
+    # ambil_hashtag = controller.get_hashtag(params["text"])
     # if ambil_hashtag.size > 0
     #     ambil_hashtag.each do |hashtag|
     #         id_hashtag = model.get_id_hashtag(hashtag)
@@ -79,10 +78,13 @@ post '/posting' do
     #         end
     #     end
     # end
-    puts request.accept
-    # if params["media"] != nil and params["media"] != ""
-    #     puts "fak"
-    # end
+    if params["media"] != nil and params["media"] != ""
+        dir_upload = controller.create_folder_upload(params["id_member"])
+        filename = controller.hapus_spesial_character(params['media'][:filename])
+        File.open(dir_upload+filename,"w") do |f|
+            f.write(params['media'][:tempfile].read)
+        end
+    end
 end
 
 get '/hashtag/:id' do

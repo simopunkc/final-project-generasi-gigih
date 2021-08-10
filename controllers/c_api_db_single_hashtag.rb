@@ -1,5 +1,3 @@
-require "./controllers/c_modules/c_cek_integer"
-
 class C_api_db_single_hashtag
     include C_cek_integer
 
