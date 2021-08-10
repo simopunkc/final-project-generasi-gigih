@@ -2,27 +2,24 @@
 - name: GCP
   hosts: all
   vars:
-    ansible_ssh_user: 'gbe01037'
-    # ansible_password: 'vagrant'
-    # ansible_ssh_private_key_file: 'vagrant.priv'
-    # ansible_port: '2222'
+    ansible_ssh_user: 'root'
     ansible_python_interpreter: '/usr/bin/python2'
 
-  # environment:
-  #   PATH: /app/.env
-
   tasks:
-  # - name: Start Mariadb
-  #   service:
-  #     name: mariadb
-  #     state: started
-
-  # - shell: source /app/.env
+  - name: Start Mariadb
+    service:
+      name: mariadb
+      state: started
 
   - shell: whoami && pwd
     register: foo
   - debug: msg="the echo was {{ foo.stdout }}"
 
+  - name: Create App directory
+    file:
+      path: /app
+      state: directory
+      
   # - name: install sinatra systemd
   #   copy:
   #     src: /app/sinatra.service
