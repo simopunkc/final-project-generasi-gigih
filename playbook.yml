@@ -63,11 +63,11 @@
     systemd:
       name: sinatra
       state: stopped
-      ignore_errors: true
+    ignore_errors: yes
 
   - name: delete sinatra
     shell: rm -rf /etc/systemd/system/sinatra.service
-    ignore_errors: true
+    ignore_errors: yes
 
   - name: install sinatra systemd
     copy:
