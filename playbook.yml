@@ -1,0 +1,73 @@
+---
+- name: GCP
+  hosts: all
+  vars:
+    ansible_ssh_user: 'gbe01037'
+    # ansible_password: 'vagrant'
+    # ansible_ssh_private_key_file: 'vagrant.priv'
+    # ansible_port: '2222'
+    ansible_python_interpreter: '/usr/bin/python2'
+
+  # environment:
+  #   PATH: /app/.env
+
+  tasks:
+  # - name: Start Mariadb
+  #   service:
+  #     name: mariadb
+  #     state: started
+
+  # - shell: source /app/.env
+
+  - shell: whoami && pwd
+    register: foo
+  - debug: msg="the echo was {{ foo.stdout }}"
+
+  # - name: install sinatra systemd
+  #   copy:
+  #     src: /app/sinatra.service
+  #     dest: /etc/systemd/system/sinatra.service
+  #     remote_src: yes
+  # - shell: systemctl daemon-reload
+  # - shell: systemctl start sinatra.service
+
+  # - name: reload systemd
+  #   systemd:
+  #     daemon_reload: yes
+
+  # - name: start sinatra
+  #   systemd:
+  #     name: sinatra
+  #     state: started
+
+  #   command: systemctl start sinatra.service
+
+  # - name: Update apt cache and install Nginx
+  #   apt:
+  #     name: nginx
+  #     state: latest
+  #     update_cache: no
+
+  # - name: Start Nginx
+  #   service:
+  #     name: nginx
+  #     state: started
+
+  # - name: Stop Nginx
+  #   service:
+  #     name: nginx
+  #     state: stopped
+
+  # - name: Ping Test
+  #   hosts: all
+  #   tasks:
+  #   - ping:
+
+  # - name: Download node setup script
+  #   get_url:
+  #     url: https://deb.nodesource.com/setup_12.x
+  #     dest: /tmp/node_setup.sh
+  #     mode: '0755'
+  #   - name: Execute node setup script
+  #     become: yes
+  #     command: bash /tmp/node_setup.sh
