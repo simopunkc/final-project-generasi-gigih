@@ -49,9 +49,10 @@ cd
 git clone https://github.com/simopunkc/final-project-generasi-gigih.git  
 cd final-project-generasi-gigih  
 mysql -u root < database.sql  
-rspec --init  
 
-# Test
+# Testing
+# Notes: Coverage should be 100%, reset the Database before running test
+rspec --init  
 rspec spec/  
 
 # Usages

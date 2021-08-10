@@ -40,18 +40,23 @@ post '/register' do
     parameter = JSON.parse(request.body.read)
     controller = C_api_db_tambah_member.new
     error_request = controller.cek_param_request(parameter)
+    headers "Content-Type" => "application/json; charset=utf-8"
     if error_request[:hasil] == true
+        status 400
         return JSON.generate(error_request)
     end
     error_value = controller.cek_valid(parameter["username"],parameter["email"])
     if error_value[:hasil] == true
+        status 400
         return JSON.generate(error_value)
     end
     model = M_api_db_tambah_member.new
     last_id = model.insert_member(parameter["username"],parameter["email"],parameter["bio"])
     if last_id > 0
+        status 201
         return JSON.generate({:id=>last_id,:pesan=>"success"})
     else
+        status 400
         return JSON.generate({:pesan=>"gagal insert ke db"})
     end
 end
@@ -59,11 +64,14 @@ end
 post '/posting' do
     controller = C_api_db_tambah_post.new
     error_request = controller.cek_param_request(params)
+    headers "Content-Type" => "application/json; charset=utf-8"
     if error_request[:hasil] == true
+        status 400
         return JSON.generate(error_request)
     end
     error_value = controller.cek_valid(params["id_member"],params["id_parent_post"],params["text"])
     if error_value[:hasil] == true
+        status 400
         return JSON.generate(error_value)
     end
     model = M_api_db_tambah_post.new
@@ -81,7 +89,8 @@ post '/posting' do
         end
     end
     if params["media"] == nil or params["media"] == ""
-        return JSON.generate({:pesan=>"post diinsert ke db dengan ID #{id_post}"})
+        status 201
+        return JSON.generate({:id=>id_post,:pesan=>"success"})
     end
     dir_upload = controller.create_folder_upload(params["id_member"])
     filename = controller.hapus_spesial_character(params['media'][:filename])
@@ -93,17 +102,22 @@ post '/posting' do
     mime = MimeMagic.by_magic(File.open(lokasi))
     id_media = model.insert_media(lokasi,mime)
     id_post_media = model.insert_post_media(id_post,id_media)
-    return JSON.generate({:pesan=>"Berhasil posting"})
+    status 201
+    return JSON.generate({:id=>id_post,:pesan=>"success upload"})
 end
 
 get '/hashtag/:id' do
     controller = C_api_db_single_hashtag.new
     error_request = controller.cek_param_request(params)
     if error_request[:hasil] == true
+        status 400
+        headers "Content-Type" => "application/json; charset=utf-8"
         return JSON.generate(error_request)
     end
     error_value = controller.cek_valid(params[:id])
     if error_value[:hasil] == true
+        status 400
+        headers "Content-Type" => "application/json; charset=utf-8"
         return JSON.generate(error_value)
     end
     model = M_api_db_single_hashtag.new
@@ -113,6 +127,7 @@ get '/hashtag/:id' do
         post = model.get_detail_post(data)
         kumpul_post.push(controller.print_output(post))
     end
+    status 200
     return kumpul_post
 end
 
@@ -120,10 +135,14 @@ get '/post/:id' do
     controller = C_api_db_single_post.new
     error_request = controller.cek_param_request(params)
     if error_request[:hasil] == true
+        status 400
+        headers "Content-Type" => "application/json; charset=utf-8"
         return JSON.generate(error_request)
     end
     error_value = controller.cek_valid(params[:id])
     if error_value[:hasil] == true
+        status 400
+        headers "Content-Type" => "application/json; charset=utf-8"
         return JSON.generate(error_value)
     end
     model = M_api_db_single_post.new
@@ -145,5 +164,6 @@ get '/post/:id' do
     single_post.push(data_media)
     single_post.push(data_post)
     single_post.push(data_comment)
+    status 200
     return controller.print_output(single_post)
 end
