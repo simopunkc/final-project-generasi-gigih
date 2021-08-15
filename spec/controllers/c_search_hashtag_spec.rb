@@ -34,4 +34,12 @@ describe C_api_db_search_hashtag do
         expect(output).to eq({:hasil => true, :pesan => "Nama hashtag harus string"})
         C_api_db_search_hashtag.new.cek_valid(parameter[:name])
     end
+    it "should valid value param" do
+        parameter = {:name=>"good"}
+        allow(@double).to receive(:cek_valid).with(parameter[:name]).and_return({:hasil => false, :pesan => ""})
+        output = @double.cek_valid(parameter[:name])
+        expect(@double).to have_received(:cek_valid).with(parameter[:name])
+        expect(output).to eq({:hasil => false, :pesan => ""})
+        C_api_db_search_hashtag.new.cek_valid(parameter[:name])
+    end
 end
