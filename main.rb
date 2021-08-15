@@ -23,11 +23,16 @@ require "./controllers/c_api_db_single_hashtag"
 require "./models/m_api_db_single_hashtag"
 require "./controllers/c_api_db_single_post"
 require "./models/m_api_db_single_post"
+require "./controllers/c_api_db_search_hashtag"
+require "./models/m_api_db_search_hashtag"
 
 get '/' do
     controller = C_api_db_trending_hashtag.new
     model = M_api_db_trending_hashtag.new
     daftar_hashtag = model.get_trending_hashtag
+    if daftar_hashtag.size == 0
+        return "tidak ada hashtag terbaru dalam 24 jam terakhir"
+    end
     raw = Array.new
     daftar_hashtag.each do |data|
         trending_hashtag = model.get_detail_hashtag(data)
@@ -129,6 +134,32 @@ get '/hashtag/:id' do
     end
     status 200
     return kumpul_post
+end
+
+get '/search/:name' do
+    puts params[:name]
+    controller = C_api_db_search_hashtag.new
+    error_request = controller.cek_param_request(params)
+    if error_request[:hasil] == true
+        status 400
+        headers "Content-Type" => "application/json; charset=utf-8"
+        return JSON.generate(error_request)
+    end
+    error_value = controller.cek_valid(params[:name])
+    if error_value[:hasil] == true
+        status 400
+        headers "Content-Type" => "application/json; charset=utf-8"
+        return JSON.generate(error_value)
+    end
+    model = M_api_db_search_hashtag.new
+    id_hashtag = model.get_id_hashtag(params[:name])
+    if id_hashtag == 0
+        status 400
+        return JSON.generate({:pesan=>"hashtag tidak ditemukan"})
+    else
+        tag = M_raw_hashtag.new(id_hashtag,params[:name])
+        controller.print_output(tag)
+    end
 end
 
 get '/post/:id' do
