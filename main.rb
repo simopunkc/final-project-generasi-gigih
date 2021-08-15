@@ -155,6 +155,7 @@ get '/search/:name' do
     id_hashtag = model.get_id_hashtag(parameter)
     if id_hashtag == 0
         status 400
+        headers "Content-Type" => "application/json; charset=utf-8"
         return JSON.generate({:pesan=>"hashtag tidak ditemukan"})
     else
         tag = M_raw_hashtag.new(id_hashtag,parameter)
