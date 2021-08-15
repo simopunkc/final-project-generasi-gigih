@@ -137,7 +137,6 @@ get '/hashtag/:id' do
 end
 
 get '/search/:name' do
-    puts params[:name]
     controller = C_api_db_search_hashtag.new
     error_request = controller.cek_param_request(params)
     if error_request[:hasil] == true
@@ -151,13 +150,14 @@ get '/search/:name' do
         headers "Content-Type" => "application/json; charset=utf-8"
         return JSON.generate(error_value)
     end
+    parameter = params[:name].downcase
     model = M_api_db_search_hashtag.new
-    id_hashtag = model.get_id_hashtag(params[:name])
+    id_hashtag = model.get_id_hashtag(parameter)
     if id_hashtag == 0
         status 400
         return JSON.generate({:pesan=>"hashtag tidak ditemukan"})
     else
-        tag = M_raw_hashtag.new(id_hashtag,params[:name])
+        tag = M_raw_hashtag.new(id_hashtag,parameter)
         controller.print_output(tag)
     end
 end
